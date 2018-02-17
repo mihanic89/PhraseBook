@@ -2,6 +2,8 @@ package xyz.yapapa.phrasebook;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Point;
+import android.os.AsyncTask;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -24,7 +26,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class TabbedActivity extends AppCompatActivity implements TTSListener,TextToSpeech.OnInitListener {
+public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,7 +37,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    private int screenWidth;
     private TextToSpeech ttsTranslate, ttsDefault;
     private String languageTranslate,languageDefault;
     private DataModel data;
@@ -48,8 +50,9 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
-
-
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+         screenWidth = size.x;
 
 
         SharedPreferences prefs = this.getSharedPreferences("language",Context.MODE_PRIVATE);
@@ -103,16 +106,115 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
-        ttsTranslate = new TextToSpeech(this, this);
+
+        try {
+            new TtsInitDefaut().execute();
+        }
+        catch (Exception e){
+           /*
+            ttsTranslate = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status==TextToSpeech.SUCCESS) {
+                        int result = ttsTranslate.setLanguage(new Locale(languageDefault, ""));
+                    }
+                    else
+                    {
+
+                    }
+                }
+            });
+            */
+        };
+
+        try {
+            new TtsInitTranslate().execute();
+        }
+        catch (Exception e){
+            /*
+            ttsTranslate = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status==TextToSpeech.SUCCESS) {
+                        int result = ttsTranslate.setLanguage(new Locale(languageTranslate, ""));
+                    }
+                    else
+                    {
+
+                    }
+                }
+            });
+            */
+        };
+        /*
+        ttsTranslate = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = ttsTranslate.setLanguage(new Locale(languageTranslate, ""));
+
+
+                } else {
+                    // Toast.makeText(this, "Not Supported in your Device", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         ttsDefault = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                int result = ttsDefault.setLanguage(new Locale(languageDefault, ""));
+                if (status==TextToSpeech.SUCCESS) {
+                    int result = ttsDefault.setLanguage(new Locale(languageDefault, ""));
+                }
+                else
+                {
+
+                }
             }
         });
+        */
     }
 
 
+    public class TtsInitDefaut extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ttsDefault = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status==TextToSpeech.SUCCESS) {
+                        int result = ttsDefault.setLanguage(new Locale(languageDefault, ""));
+                    }
+                    else
+                    {
+
+                    }
+                }
+            });
+            return null;
+        }
+    }
+
+    public class TtsInitTranslate extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ttsTranslate = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status==TextToSpeech.SUCCESS) {
+                        int result = ttsTranslate.setLanguage(new Locale(languageTranslate, ""));
+                    }
+                    else
+                    {
+
+                    }
+                }
+            });
+            return null;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -158,19 +260,6 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
         */
     }
 
-    @Override
-    public void onInit( int status) {
-
-
-                if (status == TextToSpeech.SUCCESS) {
-                    int result = ttsTranslate.setLanguage(new Locale(languageTranslate, ""));
-
-
-                } else {
-                   // Toast.makeText(this, "Not Supported in your Device", Toast.LENGTH_SHORT).show();
-                }
-
-    }
 
     @Override
     public void onDestroy() {
@@ -208,10 +297,11 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static WordholderFragment newInstance(ArrayList array) {
+        public static WordholderFragment newInstance(ArrayList array, int screenWidth) {
             WordholderFragment fragment = new WordholderFragment();
             Bundle args = new Bundle();
             args.putSerializable("key", array);
+            args.putInt("width", screenWidth);
             fragment.setArguments(args);
             return fragment;
         }
@@ -223,12 +313,13 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
            // TextView textView = (TextView) rootView.findViewById(R.id.section_label);
            // textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
+            int spanCount = 2;
             mRecyclerView = rootView.findViewById(R.id.recyclerView);
 
-            gaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            gaggeredGridLayoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
             mRecyclerView.setLayoutManager(gaggeredGridLayoutManager);
 
-            wordAdapter = new WordAdapter((ArrayList<Phrase>)getArguments().getSerializable("key"));
+            wordAdapter = new WordAdapter((ArrayList<Phrase>)getArguments().getSerializable("key"),(int) getArguments().getInt("width")/spanCount);
 
             mRecyclerView.setAdapter(wordAdapter);
 
@@ -353,16 +444,16 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener,Tex
                     return ColorholderFragment.newInstance(data.getColors());
 
                 case 3:
-                    return WordholderFragment.newInstance(data.getPeople());
+                    return WordholderFragment.newInstance(data.getPeople(),screenWidth);
 
                 case 4:
-                    return WordholderFragment.newInstance(data.getClothes());
+                    return WordholderFragment.newInstance(data.getClothes(),screenWidth);
 
                 case 5:
-                    return WordholderFragment.newInstance(data.getFood());
+                    return WordholderFragment.newInstance(data.getFood(),screenWidth);
 
                 default:
-                    return CharholderFragment.newInstance(data.getAlphabet("ru"));
+                    return WordholderFragment.newInstance(data.getPeople(),screenWidth);
 
 
 

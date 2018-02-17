@@ -5,11 +5,13 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -26,6 +28,7 @@ import java.util.Locale;
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     private final ArrayList<Phrase> mDataSet;
+    private final int screenWidth;
     private Context context;
     private GlideRequests glide;
     private  TTSListener ttsListener;
@@ -81,8 +84,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         }
     }
 
-    public WordAdapter( ArrayList<Phrase> dataSet) {
+    public WordAdapter( ArrayList<Phrase> dataSet, int screenWidth) {
 
+        this.screenWidth = screenWidth;
         mDataSet = dataSet;
 
     }
@@ -109,7 +113,10 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         //holder.getTextView().setText(mDataSet.get(position).getField());
         holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
 
-
+        //Toast toast = Toast.makeText(context,
+        //        "создан" + (int) screenWidth, Toast.LENGTH_SHORT);
+        //toast.show();
+        Log.v("Glide", "создан= " +getStringById(mDataSet.get(position).getField())+ " " + position);
         GlideSingleton.getGlide(context)
         //GlideApp.with(context)
 
@@ -117,6 +124,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
                 //.load(internetUrl)
                 .fitCenter()
                 .override(200)
+                .thumbnail()
+                .error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(Color.GRAY))
 
                 .into(holder.getImageView());
