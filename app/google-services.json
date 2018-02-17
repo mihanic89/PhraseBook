@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1057457844290",
+    "firebase_url": "https://phrasebook-c5065.firebaseio.com",
+    "project_id": "phrasebook-c5065",
+    "storage_bucket": "phrasebook-c5065.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057457844290:android:93a13ce4e2fc53d2",
+        "android_client_info": {
+          "package_name": "xyz.yapapa.phrasebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057457844290-02v4u2urkmaparuntjiinipqptrv6iv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.yapapa.phrasebook",
+            "certificate_hash": "533e4ca73c003fe250cdfa67da8594ab9432b662"
+          }
+        },
+        {
+          "client_id": "1057457844290-o9djvtmpj1lh0u1v8l6rcf8p5h8qt4er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdLN9mfcUoYLOL6sW2FCePH9EoRJUeVYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057457844290-o9djvtmpj1lh0u1v8l6rcf8p5h8qt4er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

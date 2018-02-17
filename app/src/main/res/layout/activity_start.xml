@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/appbar_padding_top"
+    tools:context="xyz.yapapa.phrasebook.StartActivity">
+
+    <Button
+        android:id="@+id/buttonHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/colorAccent"
+        android:cropToPadding="false"
+        android:elevation="5dp"
+        android:onClick="startHelp"
+        android:padding="2dp"
+        android:scaleType="fitXY"
+        android:text="@string/button_help"
+        android:textColor="@color/colorText"
+        android:textSize="48sp"
+        android:tint="@color/colorText"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <Button
+        android:id="@+id/buttonLearn"
+        style="@style/AppTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/languageSelect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:background="@color/colorAccent"
+        android:elevation="5dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="startLearn"
+        android:paddingLeft="@dimen/button_margin"
+        android:paddingRight="@dimen/button_margin"
+        android:text="@string/button_learn"
+        android:textColor="@android:color/background_light"
+        android:textSize="48sp"
+        android:typeface="normal"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/AppTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLearn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"
+        android:elevation="5dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="startTraining"
+        android:paddingLeft="@dimen/button_margin"
+        android:paddingRight="@dimen/button_margin"
+        android:text="@string/button_training"
+        android:textColor="@android:color/background_light"
+        android:textSize="48sp"
+        android:typeface="sans"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/languageSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonHelp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="29dp"
+        android:padding="5dp" />
+</RelativeLayout>

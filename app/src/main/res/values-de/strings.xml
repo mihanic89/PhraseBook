@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhraseBook</string>
+    <string name="button_learn">Learn</string>
+    <string name="button_training">Training</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="mother">mama</string>
+    <string name="square">Square</string>
+    <string name="food">" la nourriture"</string>
+    <string name="colorWhite">White</string>
+    <string name="ruLanguage">Russian</string>
+    <string name="enLanguage">English</string>
+    <string name="deLanguage">Deutcsh</string>
+    <string name="frLanguage">Franciscdh</string>
+    <string name="itLanguage">Italian</string>
+    <string name="spLanguage">Spain</string>
+
+    <string name="tab01">Alphabet</string>
+    <string name="tab02">Zahlen</string>
+    <string name="tab03">Farbe</string>
+    <string name="tab04">Form</string>
+    <string name="tab05">Zeit</string>
+    <string name="tab06">Leute</string>
+    <string name="tab07">Kleidung</string>
+    <string name="tab08">Speisen Und Getränke</string>
+    <string name="tab09">Gemüse</string>
+    <string name="tab10">Obst</string>
+    <string name="tab11">Beeren</string>
+    <string name="tab12">Körper</string>
+    <string name="tab13">Emotionen</string>
+    <string name="tab14">Tiere</string>
+    <string name="tab15">Haus</string>
+    <string name="tab16">Objekte</string>
+    <string name="tab17">Spielzeug</string>
+    <string name="tab18">Musikinstrumente</string>
+    <string name="tab19">Sport</string>
+    <string name="tab20">Transport</string>
+    <string name="tab21">Stadt</string>
+    <string name="tab22">Die Natur</string>
+    <string name="tab23">Kunst</string>
+    <string name="tab24">Schule</string>
+    <string name="tab25">Berufe</string>
+    <string name="tab26">Verben</string>
+    <string name="tab27">Adjektive</string>
+
+
+</resources>

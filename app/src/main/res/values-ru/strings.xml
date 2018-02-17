@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Иностранные языки</string>
+    <string name="button_learn">Учим</string>
+    <string name="button_training">Тренируем</string>
+    <string name="title_activity_tabbed">Закладки</string>
+
+    <string name="action_settings">Настройки</string>
+    <string name="mother">мама</string>
+    <string name="square">квадрат</string>
+    <string name="food">еда</string>
+    <string name="colorWhite">Белый</string>
+    <string name="ruLanguage">Русский</string>
+    <string name="enLanguage">Английский</string>
+    <string name="deLanguage">Немецкий</string>
+    <string name="frLanguage">Французкий</string>
+    <string name="itLanguage">Итальянский</string>
+    <string name="spLanguage">Испанский</string>
+
+    <string name="tab01">Алфавит</string>
+    <string name="tab02">Числа</string>
+    <string name="tab03">Цвета</string>
+    <string name="tab04">Формы</string>
+    <string name="tab05">Время</string>
+    <string name="tab06">Люди</string>
+    <string name="tab07">Одежда </string>
+    <string name="tab08">Еда и напитки</string>
+    <string name="tab09">Овощи</string>
+    <string name="tab10">Фрукты</string>
+    <string name="tab11">Ягоды</string>
+    <string name="tab12">Тело</string>
+    <string name="tab13">Эмоции</string>
+    <string name="tab14">Животные</string>
+    <string name="tab15">Дом</string>
+    <string name="tab16">Предметы</string>
+    <string name="tab17">Игрушки</string>
+    <string name="tab18">Музыкальные инструменты</string>
+    <string name="tab19">Спорт</string>
+    <string name="tab20">Транспорт</string>
+    <string name="tab21">Город</string>
+    <string name="tab22">Природа</string>
+    <string name="tab23">Исскуство</string>
+    <string name="tab24">Школа</string>
+    <string name="tab25">Профессии</string>
+    <string name="tab26">Глаголы</string>
+    <string name="tab27">Прилагательные</string>
+
+
+</resources>
