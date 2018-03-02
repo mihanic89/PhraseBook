@@ -8,7 +8,13 @@ import java.io.Serializable;
 
 class Phrase implements Serializable {
     private Integer field ;
-    private Integer image;
+    private String image;
+
+    public Integer getColor() {
+        return color;
+    }
+
+    private Integer color;
 
     public String getDefaultLanguage() {
         return defaultLanguage;
@@ -21,13 +27,20 @@ class Phrase implements Serializable {
     private String defaultLanguage;
     private String translateLanguage;
 
-    public Phrase(Integer field, Integer image) {
+    public Phrase(Integer field, String image) {
         this.field = field;
         this.image = image;
     }
-    public Phrase(Integer field, Integer image, String defaultLanguage, String translateLanguage) {
+    public Phrase(Integer field, String image, String defaultLanguage, String translateLanguage) {
         this.field = field;
         this.image = image;
+        this.defaultLanguage = defaultLanguage;
+        this.translateLanguage = translateLanguage;
+    }
+
+    public Phrase(Integer field, Integer color, String defaultLanguage, String translateLanguage) {
+        this.field = field;
+        this.color = color;
         this.defaultLanguage = defaultLanguage;
         this.translateLanguage = translateLanguage;
     }
@@ -35,12 +48,12 @@ class Phrase implements Serializable {
         this.field = field;
     }
 
-    public Integer getImage() {
+    public String getImage() {
 
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

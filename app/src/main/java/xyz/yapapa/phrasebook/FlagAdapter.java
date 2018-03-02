@@ -1,76 +1,141 @@
 package xyz.yapapa.phrasebook;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.request.target.Target;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Misha on 09.01.2018.
  */
 
-public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
+public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
 
-    private final ArrayList<String> mDataSet;
+    private final ArrayList<Phrase> mDataSet;
+    private final int screenWidth;
+    private Context context;
 
-    private TTSListener ttsListener;
+    private  TTSListener ttsListener;
+    private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textChar;
+        private final TextView textTranslate;
+        private final TextView textDefault;
 
-
-
+        public final TextView flagView;
+        public Context context;
 
         public ViewHolder(View itemView) {
+
             super(itemView);
 
-            textChar = itemView.findViewById(R.id.textChar);
+            textTranslate = itemView.findViewById(R.id.textTranslate);
+            textDefault = itemView.findViewById(R.id.textDefault);
+            flagView = itemView.findViewById(R.id.flagView);
 
-
-            textChar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttsListener.speakTranslate(mDataSet.get(getAdapterPosition()));
-                }
-
-            });
 
         }
 
-        public TextView getTextChar() {
-            return textChar;
+        public TextView getTextTranslate() {
+            return textTranslate;
+        }
+        public TextView getTextDefault() {
+            return textDefault;
+        }
+        public TextView getFlagView() {
+            return flagView;
         }
 
-
-
+        public void setContext (Context context) {
+            this.context=context;
+        }
     }
 
-    public CharAdapter(ArrayList<String> dataSet) {
+    public FlagAdapter(ArrayList<Phrase> dataSet, int screenWidth) {
+
+        this.screenWidth = screenWidth;
         mDataSet = dataSet;
+
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.char_item, parent, false);
-        Context context = parent.getContext();
+                .inflate(R.layout.flag_item, parent, false);
+        context = parent.getContext();
         if (ttsListener==null){
-            ttsListener = (TTSListener) context;}
+        ttsListener = (TTSListener)context;}
+
         return new ViewHolder(v);
+
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //holder.getTextView().setText(R.string.app_name);
-        holder.getTextChar().setText(mDataSet.get(position));
+        holder.getTextDefault().setText(mDataSet.get(position).getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
-        //holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-       // holder.getImageView().setImageResource(mDataSet.get(position).getImage());
+        holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
+
+        //Toast toast = Toast.makeText(context,
+        //        "создан" + (int) screenWidth, Toast.LENGTH_SHORT);
+        //toast.show();
+        //Log.v("Glide", "создан= " +getStringById(mDataSet.get(position).getField())+ " " + position);
+       // GlideSingleton.getGlide(context)
+
+        holder.getFlagView().setText(mDataSet.get(position).getImage());
+
+
+
+
+
+        holder.getFlagView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),
+                        mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),
+                        mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getTextDefault().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakDefault(getStringById(
+                        mDataSet.get(position).getField())
+
+                );
+            }
+
+        });
+
         // Define click listener for the ViewHolder's View.
 
        /* holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
@@ -140,9 +205,16 @@ public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
         */
     }
 
+    private String getStringById(int id) {
 
+        return context.getResources().getString(id);
+    }
 
-
+    private String getStringByLocal(int id, String locale) {
+        Configuration configuration = new Configuration(context.getResources().getConfiguration());
+        configuration.setLocale(new Locale(locale));
+        return context.createConfigurationContext(configuration).getResources().getString(id);
+    }
 
     @Override
     public int getItemCount() {

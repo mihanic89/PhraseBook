@@ -16,17 +16,21 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/colorTextTranslate"
+            android:id="@+id/colorTextDefault"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
             android:background="@color/colorPrimary"
+            android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:padding="@dimen/text_padding"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:textColor="#ffffff"
-            android:textSize="25sp"
-
-            tools:text="TranslateText" />
+            android:textSize="@dimen/default_text_size"
+            tools:text="DefaultText" />
 
 
         <ImageView
@@ -35,26 +39,29 @@
             android:layout_height="150dp"
             android:background="@color/colorPrimary"
             android:gravity="center_horizontal"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+
 
             android:textSize="75sp"
 
-            tools:text="TranslateText" />
+            tools:text="TranslateText"
+            android:contentDescription="TODO" />
 
         <TextView
-            android:id="@+id/colorTextDefault"
+            android:id="@+id/colorTextTranslate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="@color/colorPrimary"
+            android:autoSizeTextType="uniform"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:padding="@dimen/text_padding"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:textColor="#ffffff"
-            android:textSize="18sp"
-
-            tools:text="DefaultText" />
+            android:textSize="@dimen/translate_text_size"
+            tools:text="TranslateText" />
 
 
     </LinearLayout>

@@ -37,13 +37,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             imageTextTranslate  = itemView.findViewById(R.id.colorTextTranslate);
             imageTextDefault  = itemView.findViewById(R.id.colorTextDefault);
 
-            imageColor.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttsListener.speakTranslate(getStringByLocal(mDataSet.get(getAdapterPosition()).getField(),mDataSet.get(getAdapterPosition()).getTranslateLanguage()));
-                }
 
-            });
 
 
         }
@@ -87,7 +81,39 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
         //holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
         holder.getImageTextDefault().setText(mDataSet.get(position).getField());
         holder.getImageTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-        holder.getImageColor().setImageResource(mDataSet.get(position).getImage());
+        holder.getImageColor().setImageResource(mDataSet.get(position).getColor());
+
+        holder.getImageColor().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getImageTextTranslate().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),
+                        mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getImageTextDefault().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakDefault(getStringById(
+                        mDataSet.get(position).getField())
+
+                );
+            }
+
+        });
+
+
         // Define click listener for the ViewHolder's View.
 
        /* holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
@@ -163,6 +189,11 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
         Configuration configuration = new Configuration(context.getResources().getConfiguration());
         configuration.setLocale(new Locale(locale));
         return context.createConfigurationContext(configuration).getResources().getString(id);
+    }
+
+    private String getStringById(int id) {
+
+        return context.getResources().getString(id);
     }
 
     @Override

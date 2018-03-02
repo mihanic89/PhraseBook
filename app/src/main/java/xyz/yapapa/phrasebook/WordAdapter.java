@@ -14,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -30,7 +33,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     private final ArrayList<Phrase> mDataSet;
     private final int screenWidth;
     private Context context;
-    private GlideRequests glide;
+
+
     private  TTSListener ttsListener;
     private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
 
@@ -38,8 +42,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         private final TextView textTranslate;
         private final TextView textDefault;
 
-        private final ImageView imageView;
-        public Context context;
+        public final ImageView imageView;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -48,26 +52,10 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             textDefault = itemView.findViewById(R.id.textDefault);
             imageView = itemView.findViewById(R.id.imageView);
 
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttsListener.speakTranslate(getStringByLocal(
-                            mDataSet.get(getAdapterPosition()).getField(),
-                            mDataSet.get(getAdapterPosition()).getTranslateLanguage()));
-                }
 
-            });
-            textDefault.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttsListener.speakDefault(getStringById(
-                            mDataSet.get(getAdapterPosition()).getField())
-
-                    );
-                }
-
-            });
         }
+
+
 
         public TextView getTextTranslate() {
             return textTranslate;
@@ -79,15 +67,16 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             return imageView;
         }
 
-        public void setContext (Context context) {
-            this.context=context;
-        }
+
     }
 
-    public WordAdapter( ArrayList<Phrase> dataSet, int screenWidth) {
+    public WordAdapter( ArrayList<Phrase> dataSet, int screenWidth, Context context) {
 
         this.screenWidth = screenWidth;
         mDataSet = dataSet;
+        this.context = context;
+        if (ttsListener==null){
+        ttsListener = (TTSListener)context;}
 
     }
 
@@ -97,13 +86,22 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.word_item, parent, false);
-        context = parent.getContext();
-        if (ttsListener==null){
-        ttsListener = (TTSListener)context;}
+        //if (context==null){
+       // context = parent.getContext().getApplicationContext();}
+
 
         return new ViewHolder(v);
 
     }
+
+    @Override
+    public void onViewRecycled (ViewHolder holder){
+        GlideApp.with(context).clear(holder.getImageView());
+       // Toast toast = Toast.makeText(context,
+      //          "очищен" + holder.getImageView(), Toast.LENGTH_SHORT);
+      //  toast.show();
+    }
+
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
@@ -111,25 +109,68 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         holder.getTextDefault().setText(mDataSet.get(position).getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
-        holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
 
+        try {
+            holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(), mDataSet.get(position).getTranslateLanguage()));
+        }
+        catch (Exception e){
+            holder.getTextTranslate().setText(R.string.error);
+        }
         //Toast toast = Toast.makeText(context,
         //        "создан" + (int) screenWidth, Toast.LENGTH_SHORT);
         //toast.show();
-        Log.v("Glide", "создан= " +getStringById(mDataSet.get(position).getField())+ " " + position);
-        GlideSingleton.getGlide(context)
-        //GlideApp.with(context)
+        //Log.v("Glide", "создан= " +getStringById(mDataSet.get(position).getField())+ " " + position);
+       // GlideSingleton.getGlide(context)
 
-                .load(mStorageRef.child("1233.jpg"))
+
+
+
+        GlideApp.with(context)
+               // .asDrawable()
+               // .load(mStorageRef.child(mDataSet.get(position).getImage()))
+                .load(mStorageRef.child(mDataSet.get(position).getImage()))
                 //.load(internetUrl)
+                //.skipMemoryCache(true)
+                .override((int)screenWidth, Target.SIZE_ORIGINAL)
                 .fitCenter()
-                .override(200)
-                .thumbnail()
-                .error(R.mipmap.ic_launcher)
+               // .thumbnail()
+                 .error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(Color.GRAY))
-
+               //.placeholder(R.mipmap.placeholder)
+               // .transition(withCrossFade(700))
                 .into(holder.getImageView());
 
+
+        holder.getImageView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),
+                        mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakTranslate(getStringByLocal(
+                        mDataSet.get(position).getField(),
+                        mDataSet.get(position).getTranslateLanguage()));
+            }
+
+        });
+
+        holder.getTextDefault().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ttsListener.speakDefault(getStringById(
+                        mDataSet.get(position).getField())
+
+                );
+            }
+
+        });
 
         // Define click listener for the ViewHolder's View.
 
@@ -199,6 +240,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         });
         */
     }
+
+
 
     private String getStringById(int id) {
 

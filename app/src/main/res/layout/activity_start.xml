@@ -4,46 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/appbar_padding_top"
-    tools:context="xyz.yapapa.phrasebook.StartActivity">
 
-    <Button
-        android:id="@+id/buttonHelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:adjustViewBounds="true"
-        android:backgroundTint="@color/colorAccent"
-        android:cropToPadding="false"
-        android:elevation="5dp"
-        android:onClick="startHelp"
-        android:padding="2dp"
-        android:scaleType="fitXY"
-        android:text="@string/button_help"
-        android:textColor="@color/colorText"
-        android:textSize="48sp"
-        android:tint="@color/colorText"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+    tools:context="xyz.yapapa.phrasebook.StartActivity">
 
     <Button
         android:id="@+id/buttonLearn"
         style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/languageSelect"
+        android:layout_alignEnd="@+id/languageSelect"
+
+        android:layout_alignStart="@+id/languageSelect"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:background="@color/colorAccent"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@drawable/oval_shape"
         android:elevation="5dp"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="startLearn"
-        android:paddingLeft="@dimen/button_margin"
-        android:paddingRight="@dimen/button_margin"
+        android:padding="@dimen/button_padding"
         android:text="@string/button_learn"
         android:textColor="@android:color/background_light"
-        android:textSize="48sp"
-        android:typeface="normal"
+        android:textSize="@dimen/start_text_size"
+        android:typeface="sans"
         android:visibility="visible" />
 
     <Button
@@ -51,30 +36,81 @@
         style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/languageSelect"
+        android:layout_alignStart="@+id/languageSelect"
         android:layout_below="@+id/buttonLearn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorAccent"
+
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@drawable/oval_shape"
         android:elevation="5dp"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="startTraining"
-        android:paddingLeft="@dimen/button_margin"
-        android:paddingRight="@dimen/button_margin"
+        android:padding="@dimen/button_padding"
         android:text="@string/button_training"
+        android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="48sp"
+        android:textSize="@dimen/start_text_size"
         android:typeface="sans"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <Spinner
         android:id="@+id/languageSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonLearn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@drawable/oval_shape"
+        android:dropDownWidth="match_parent"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:padding="@dimen/button_margin"
+        android:spinnerMode="dialog"
+        android:theme="@style/AppTheme"
+        tools:listitem="@layout/simple_spinner_custom_item"
+        tools:text="Иностраный" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/buttonHelp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="29dp"
-        android:padding="5dp" />
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/button_margin"
+        android:layout_marginBottom="@dimen/button_padding"
+        android:adjustViewBounds="true"
+        android:background="@drawable/oval_shape"
+        android:elevation="5dp"
+        android:onClick="share"
+        android:padding="@dimen/button_padding"
+        android:tint="@color/colorText"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/button_margin"
+        android:adjustViewBounds="true"
+        android:background="@drawable/oval_shape"
+        android:elevation="5dp"
+        android:onClick="help"
+        android:padding="@dimen/button_padding"
+        android:tint="@color/colorText"
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
 </RelativeLayout>
