@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
@@ -96,7 +99,13 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     @Override
     public void onViewRecycled (ViewHolder holder){
+
+
         GlideApp.with(context).clear(holder.getImageView());
+        holder.getImageView().setImageBitmap(null);
+        holder.getTextDefault().setOnClickListener(null);
+        holder.getTextTranslate().setOnClickListener(null);
+        super.onViewRecycled(holder);
        // Toast toast = Toast.makeText(context,
       //          "очищен" + holder.getImageView(), Toast.LENGTH_SHORT);
       //  toast.show();
@@ -129,15 +138,17 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
                // .asDrawable()
                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
                 .load(mStorageRef.child(mDataSet.get(position).getImage()))
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .priority(Priority.LOW)
                 //.load(internetUrl)
                 //.skipMemoryCache(true)
-                .override((int)screenWidth, Target.SIZE_ORIGINAL)
+                .override((int)screenWidth)
                 .fitCenter()
                // .thumbnail()
                  .error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(Color.GRAY))
                //.placeholder(R.mipmap.placeholder)
-               // .transition(withCrossFade(700))
+                //.transition(withCrossFade(700))
                 .into(holder.getImageView());
 
 
@@ -161,7 +172,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
         });
 
-        holder.getTextDefault().setOnClickListener(new View.OnClickListener() {
+        holder.textDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
@@ -171,6 +182,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             }
 
         });
+
+
 
         // Define click listener for the ViewHolder's View.
 
