@@ -13,4 +13,7 @@
     <color name="brown">#4e342e</color>
 
     <color name="backgroud_flag">#E9E9E9</color>
+
+    <color name="tab_default">#A5D6A7</color>
+    <color name="tab_selected">@color/colorText</color>
 </resources>

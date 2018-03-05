@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- When selected, use grey -->
+<item android:state_selected="true">
+ <bitmap android:src="@drawable/ic_tab14" android:tint="@color/tab_selected" />
+     </item>
+
+<!-- When not selected, use white-->
+<item >
+    <bitmap android:src="@drawable/ic_tab14" android:tint="@color/tab_default" />
+</item>
+</selector>

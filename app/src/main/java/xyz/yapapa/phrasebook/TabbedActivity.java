@@ -50,6 +50,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
     private int sharedIndex;
     private DataModel data;
     private SharedPreferences prefs;
+    private TabLayout tabLayout;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -85,39 +86,11 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout = findViewById(R.id.tabs);
 
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab01)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab02)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab03)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab04)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab05)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab06)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab07)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab08)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab09)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab10)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab11)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab12)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab13)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab14)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab15)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab16)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab17)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab18)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab19)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab20)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab21)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab22)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab23)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab24)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab25)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab26)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab27)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab28)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab29)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab30)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab31)));
+        createTabs();
+
+
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -172,7 +145,172 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         */
     }
 
+    private void createTabs() {
 
+        View view1 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view1.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab01);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view1));
+
+
+
+        View view2 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view2.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab02);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view2));
+
+
+        View view3 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab03);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view3));
+
+
+        View view4 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view4.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab04);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view4));
+
+        View view5 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view5.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab05);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view5));
+
+        View view6 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view6.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab06);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view6));
+
+        View view7 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view7.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab07);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view7));
+
+        View view8 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view8.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab08);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view8));
+
+        View view9 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view9.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab09);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view9));
+
+        View view10 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view10.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab10);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view10));
+
+        View view11 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view11.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab11);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view11));
+
+        View view12 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view12.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab12);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view12));
+
+        View view13 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view13.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab13);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view13));
+
+        View view14 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view14.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab14);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view14));
+
+        View view15 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view15.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab15);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view15));
+
+        View view16 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view16.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab16);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view16));
+
+        View view17 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view17.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab17);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view17));
+
+        View view18 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view18.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab18);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view18));
+
+        View view19 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view19.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab19);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view19));
+
+        View view20 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view20.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab20);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view20));
+
+        View view21 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view21.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab21);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view21));
+
+        View view22 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view22.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab22);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view22));
+
+        View view23 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view23.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab23);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view23));
+
+        View view24 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view24.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab24);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view24));
+
+        View view25 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view25.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab25);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view25));
+
+        View view26 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view26.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab26);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view26));
+
+        View view27 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view27.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab27);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view27));
+
+        View view28 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view28.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab28);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view28));
+
+        View view29 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view29.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab29);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view29));
+
+        View view30 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view30.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab30);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view30));
+
+        View view31 = getLayoutInflater().inflate(R.layout.customtab, null);
+        view31.findViewById(R.id.icon).setBackgroundResource(R.drawable.tab31);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view31));
+
+
+
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab01)));
+        // tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tab01));
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab02)));
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab03)));
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab04)));
+        //tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab05)));
+       /* tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab06)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab07)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab08)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab09)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab10)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab11)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab12)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab13)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab14)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab15)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab16)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab17)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab18)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab19)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab20)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab21)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab22)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab23)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab24)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab25)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab26)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab27)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab28)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab29)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab30)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tab31)));
+        */
+    }
 
 
     public class TtsInitDefaut extends AsyncTask<Void, Void, Void>{
