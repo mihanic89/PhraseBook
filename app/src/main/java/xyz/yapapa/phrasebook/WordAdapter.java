@@ -5,22 +5,16 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import com.bumptech.glide.Priority;
-import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -115,8 +109,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position1) {
         //holder.getTextView().setText(R.string.app_name);
-        final int position = position1;
-        final Phrase word = mDataSet.get(position);
+        //final int position = position1;
+        final Phrase word = mDataSet.get(position1);
         holder.getTextDefault().setText(word.getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
@@ -149,7 +143,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
                 .fitCenter()
                // .thumbnail()
                  .error(R.mipmap.ic_launcher)
-                .placeholder(new ColorDrawable(Color.GRAY))
+                .placeholder(new ColorDrawable(context.getResources().getColor( R.color.background)))
                //.placeholder(R.mipmap.placeholder)
                 .transition(withCrossFade(700))
                 .into(holder.getImageView());

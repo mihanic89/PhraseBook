@@ -59,11 +59,11 @@ public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder,  int position1) {
-        final int position = position1;
+       // final int position = position1;
 
         final String char1 = mDataSet.get(position1);
         //holder.getTextView().setText(R.string.app_name);
-        holder.getTextChar().setText(mDataSet.get(position));
+        holder.getTextChar().setText(char1);
         holder.getTextChar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

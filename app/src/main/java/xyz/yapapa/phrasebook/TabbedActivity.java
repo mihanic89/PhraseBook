@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,9 +27,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.MemoryCategory;
 import com.bumptech.glide.Priority;
-import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
@@ -87,7 +84,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
                 .fitCenter()
                 // .thumbnail()
                 //.error(R.mipmap.ic_launcher)
-                .placeholder(new ColorDrawable(Color.GRAY))
+                .placeholder(new ColorDrawable(getResources().getColor(R.color.background)))
                 //.placeholder(R.mipmap.placeholder)
                 .transition(withCrossFade(700))
                 .into((ImageView) findViewById(R.id.imageViewBackground2));

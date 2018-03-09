@@ -2,16 +2,12 @@ package xyz.yapapa.phrasebook;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -25,7 +21,7 @@ import java.util.Locale;
 public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
 
     private ArrayList<Phrase> mDataSet;
-    private final int screenWidth;
+    private int screenWidth;
     private Context context;
 
     private  TTSListener ttsListener;

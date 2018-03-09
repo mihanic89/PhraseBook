@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Priority;
@@ -67,7 +66,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                 .fitCenter()
                 // .thumbnail()
                 //.error(R.mipmap.ic_launcher)
-                .placeholder(new ColorDrawable(Color.GRAY))
+                .placeholder(new ColorDrawable(getResources().getColor(R.color.background)))
                 //.placeholder(R.mipmap.placeholder)
                 .transition(withCrossFade(700))
                 .into((ImageView) findViewById(R.id.imageViewBackground));
