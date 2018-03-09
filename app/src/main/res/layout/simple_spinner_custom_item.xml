@@ -8,7 +8,8 @@
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
     android:singleLine="true"
+    android:gravity="center_horizontal"
     android:autoSizeTextType="uniform"
     android:textAlignment="center"
     android:textColor="@color/colorText"
-    android:textSize="25sp" />
+    android:textSize="@dimen/start_text_size" />

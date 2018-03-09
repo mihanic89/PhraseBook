@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.MemoryCategory;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestManager;
 
 
@@ -482,6 +483,8 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
             if (screenSize>=Configuration.SCREENLAYOUT_SIZE_LARGE) spanCount=3;
 
+
+
             mRecyclerView = rootView.findViewById(R.id.recyclerView);
 
             gaggeredGridLayoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
@@ -490,10 +493,12 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
            // GlideApp.get(rootView.getContext()).setMemoryCategory(MemoryCategory.LOW);
             wordAdapter = new WordAdapter(
                     (ArrayList<Phrase>)getArguments().getSerializable("key"),
-                    (int) getArguments().getInt("width")/(spanCount+1),
-                    rootView.getContext());
+                    (int) getArguments().getInt("width")/(spanCount+2),
+                    rootView.getContext(), GlideApp.with(rootView.getContext()));
 
             mRecyclerView.setAdapter(wordAdapter);
+            mRecyclerView.setItemViewCacheSize(0);
+            mRecyclerView.getRecycledViewPool().setMaxRecycledViews(0,spanCount*4);
             /*
             mRecyclerView.setRecyclerListener(new RecyclerView.RecyclerListener() {
                 @Override

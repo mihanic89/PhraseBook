@@ -36,7 +36,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     private final ArrayList<Phrase> mDataSet;
     private final int screenWidth;
     private Context context;
-
+    private GlideRequests glideRequests;
 
     private  TTSListener ttsListener;
     private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
@@ -73,8 +73,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     }
 
-    public WordAdapter( ArrayList<Phrase> dataSet, int screenWidth, Context context) {
-
+    public WordAdapter( ArrayList<Phrase> dataSet, int screenWidth, Context context, GlideRequests glideRequests ) {
+        this.glideRequests = glideRequests;
         this.screenWidth = screenWidth;
         mDataSet = dataSet;
         this.context = context;
@@ -101,7 +101,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     public void onViewRecycled (ViewHolder holder){
 
 
-        GlideApp.with(context).clear(holder.getImageView());
+        glideRequests.clear(holder.getImageView());
         holder.getImageView().setImageBitmap(null);
         holder.getTextDefault().setOnClickListener(null);
         holder.getTextTranslate().setOnClickListener(null);
@@ -134,7 +134,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
 
 
-        GlideApp.with(context)
+        glideRequests
                // .asDrawable()
                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
                 .load(mStorageRef.child(mDataSet.get(position).getImage()))
@@ -148,7 +148,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
                  .error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(Color.GRAY))
                //.placeholder(R.mipmap.placeholder)
-                //.transition(withCrossFade(700))
+                .transition(withCrossFade(700))
                 .into(holder.getImageView());
 
 

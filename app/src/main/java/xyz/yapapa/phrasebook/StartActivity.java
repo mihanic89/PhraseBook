@@ -108,6 +108,12 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         }
         else setDefaultLocale("pt");
 
+        if (!language.equals("fi")) {
+            languages.add("\uD83C\uDDEB\uD83C\uDDEE "+getResources().getString(R.string.fiLanguage));
+            locales.add("fi");
+        }
+        else setDefaultLocale("pt");
+
         if (!language.equals("be")) {
             languages.add("\uD83C\uDDE7\uD83C\uDDFE "+getResources().getString(R.string.beLanguage));
             locales.add("be");
@@ -120,7 +126,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         }
         else setDefaultLocale("uk");
 
-        if (!language.equals("en") && (languages.size()!=9)) {
+        if (!language.equals("en") && (languages.size()!=10)) {
             languages.add(0,"\uD83C\uDDEC\uD83C\uDDE7 "+getResources().getString(R.string.enLanguage));
             locales.add(0,"en");
         }
@@ -152,6 +158,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         if (languageTranslate.equals("it")) i=locales.indexOf(languageTranslate);
         if (languageTranslate.equals("es")) i=locales.indexOf(languageTranslate);
         if (languageTranslate.equals("pt")) i=locales.indexOf(languageTranslate);
+        if (languageTranslate.equals("fi")) i=locales.indexOf(languageTranslate);
         if (languageTranslate.equals("be")) i=locales.indexOf(languageTranslate);
         if (languageTranslate.equals("uk"))i=locales.indexOf(languageTranslate);
         if (i>0) languageSpinner.setSelection(i);
@@ -165,7 +172,12 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void share (View v){
-
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody =getString(R.string.tryIt) + getString(R.string.link);
+       // sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.shareVia)));
     }
 
     public void startLearn (View v){

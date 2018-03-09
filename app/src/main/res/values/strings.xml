@@ -6,7 +6,9 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
     <string name="error">Error</string>
-
+    <string name="link" translatable="false">https://play.google.com/store/apps/dev?id=8095982564959788470</string>
+    <string name="tryIt" >Try it! \n</string>
+    <string name="shareVia" >Share via</string>
 
     <string name="enLanguage">English</string>
     <string name="ruLanguage">Russian</string>

@@ -6,16 +6,17 @@
     <string name="title_activity_tabbed">Закладки</string>
 
 
-    <string name="enLanguage">English</string>
-    <string name="ruLanguage">Russian</string>
-    <string name="frLanguage">French</string>
-    <string name="deLanguage">German</string>
-    <string name="itLanguage">Italian</string>
-    <string name="spLanguage">Spanish</string>
-    <string name="ptLanguage">Portuguese</string>
-    <string name="beLanguage">Belarusian</string>
-    <string name="ukLanguage">Ukrainian</string>
-    <string name="zhLanguage">Chinese</string>
+    <string name="enLanguage">Английский</string>
+    <string name="ruLanguage">Русский</string>
+    <string name="frLanguage">Французский</string>
+    <string name="deLanguage">Немецкий</string>
+    <string name="itLanguage">Итальянский</string>
+    <string name="spLanguage">Испанский</string>
+    <string name="ptLanguage">Португальский</string>
+    <string name="beLanguage">Белорусский</string>
+    <string name="ukLanguage">Украинский</string>
+    <string name="zhLanguage">Китайский</string>
+    <string name="fiLanguage">Финский</string>
 
     <string name="tab01">Алфавит</string>
     <string name="tab02">Числа</string>
