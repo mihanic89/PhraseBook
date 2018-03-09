@@ -7,6 +7,15 @@
 
     tools:context="xyz.yapapa.phrasebook.StartActivity">
 
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:contentDescription="Image"
+        android:gravity="center_horizontal"/>
+
     <Button
         android:id="@+id/buttonLearn"
         style="@style/AppTheme"

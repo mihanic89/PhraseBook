@@ -3,7 +3,9 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.TabLayout;
@@ -23,15 +25,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.MemoryCategory;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
@@ -45,7 +51,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
      */
     private static final String STATE_POSITION_INDEX = "state_position_index";
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private int screenWidth;
+    private int screenWidth,screenHeight;
     private TextToSpeech ttsTranslate, ttsDefault;
     private String languageTranslate,languageDefault;
     private int sharedIndex;
@@ -67,6 +73,24 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
          screenWidth = size.x;
+         screenHeight= size.y;
+
+        GlideApp.with(this)
+                // .asDrawable()
+                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
+                .load(R.mipmap.background)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .priority(Priority.LOW)
+                //.load(internetUrl)
+                //.skipMemoryCache(true)
+                .override((int)screenWidth/3, (int) screenHeight/3)
+                .fitCenter()
+                // .thumbnail()
+                //.error(R.mipmap.ic_launcher)
+                .placeholder(new ColorDrawable(Color.GRAY))
+                //.placeholder(R.mipmap.placeholder)
+                .transition(withCrossFade(700))
+                .into((ImageView) findViewById(R.id.imageViewBackground2));
 
 
         prefs = this.getSharedPreferences("language",Context.MODE_PRIVATE);

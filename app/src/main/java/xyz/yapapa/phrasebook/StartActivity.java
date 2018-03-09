@@ -3,25 +3,34 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class StartActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner languageSpinner;
     private List<String> languages;
     private List<String> locales;
-
+    private int screenWidth, screenHeight;
 
 
 
@@ -34,6 +43,34 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
         setContentView(R.layout.activity_start);
+
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
+
+        Toast toast = Toast.makeText(getApplicationContext(),
+                screenWidth + " " + screenHeight, Toast.LENGTH_SHORT);
+        toast.show();
+
+
+        GlideApp.with(this)
+                // .asDrawable()
+                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
+                .load(R.mipmap.background)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .priority(Priority.LOW)
+                //.load(internetUrl)
+                //.skipMemoryCache(true)
+                .override((int)screenWidth/3, (int) screenHeight/3)
+                .fitCenter()
+                // .thumbnail()
+                //.error(R.mipmap.ic_launcher)
+                .placeholder(new ColorDrawable(Color.GRAY))
+                //.placeholder(R.mipmap.placeholder)
+                .transition(withCrossFade(700))
+                .into((ImageView) findViewById(R.id.imageViewBackground));
+
         SharedPreferences sharedPref = this.getSharedPreferences("language",Context.MODE_PRIVATE);
 
 
