@@ -33,7 +33,7 @@ import java.util.Locale;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
-    private final ArrayList<Phrase> mDataSet;
+    private ArrayList<Phrase> mDataSet;
     private final int screenWidth;
     private Context context;
     private GlideRequests glideRequests;
@@ -42,10 +42,10 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textTranslate;
-        private final TextView textDefault;
+        private TextView textTranslate;
+        private TextView textDefault;
 
-        public final ImageView imageView;
+        public ImageView imageView;
 
 
         public ViewHolder(View itemView) {
@@ -113,15 +113,17 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position1) {
         //holder.getTextView().setText(R.string.app_name);
-        holder.getTextDefault().setText(mDataSet.get(holder.getAdapterPosition()).getField());
+        final int position = position1;
+        final Phrase word = mDataSet.get(position);
+        holder.getTextDefault().setText(word.getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
 
         try {
-            holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(holder.getAdapterPosition()).getField(),
-                    mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+            holder.getTextTranslate().setText(getStringByLocal(word.getField(),
+                    word.getTranslateLanguage()));
         }
         catch (Exception e){
             holder.getTextTranslate().setText(R.string.error);
@@ -138,7 +140,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         glideRequests
                // .asDrawable()
                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
-                .load(mStorageRef.child(mDataSet.get(holder.getAdapterPosition()).getImage()))
+                .load(mStorageRef.child(word.getImage()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .priority(Priority.LOW)
                 //.load(internetUrl)
@@ -157,8 +159,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),
-                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        word.getField(),
+                        word.getTranslateLanguage()));
             }
 
         });
@@ -167,8 +169,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),
-                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        word.getField(),
+                        word.getTranslateLanguage()));
             }
 
         });
@@ -177,7 +179,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(holder.getAdapterPosition()).getField())
+                        word.getField())
 
                 );
             }

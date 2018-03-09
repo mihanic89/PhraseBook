@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
 
-    private final ArrayList<String> mDataSet;
+    private  ArrayList<String> mDataSet;
 
     private TTSListener ttsListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textChar;
+        private TextView textChar;
 
 
 
@@ -58,13 +58,16 @@ public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder,  int position) {
+    public void onBindViewHolder(ViewHolder holder,  int position1) {
+        final int position = position1;
+
+        final String char1 = mDataSet.get(position1);
         //holder.getTextView().setText(R.string.app_name);
         holder.getTextChar().setText(mDataSet.get(position));
         holder.getTextChar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ttsListener.speakTranslate(mDataSet.get(holder.getAdapterPosition()));
+                ttsListener.speakTranslate(char1);
             }
 
         });
@@ -73,7 +76,7 @@ public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
         holder.getTextChar().setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ttsListener.speakDefault(mDataSet.get(holder.getAdapterPosition()));
+                ttsListener.speakDefault(char1);
                 return true;
             }
         });

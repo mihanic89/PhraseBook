@@ -18,13 +18,13 @@ import java.util.Locale;
 
 public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> {
 
-    private final ArrayList<Phrase> mDataSet;
+    private ArrayList<Phrase> mDataSet;
     private Context context;
     private TTSListener ttsListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imageColor;
-        private final TextView imageTextTranslate, imageTextDefault;
+        private  ImageView imageColor;
+        private  TextView imageTextTranslate, imageTextDefault;
 
 
 
@@ -71,7 +71,9 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position1) {
+        //final int position = position1;
+        final Phrase color = mDataSet.get(position1);
         //holder.getTextView().setText(R.string.app_name);
         //holder.getTextColor().setText("C");
         //holder.getTextColor().setTextColor(mDataSet.get(position));
@@ -87,7 +89,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        color.getField(),color.getTranslateLanguage()));
             }
 
         });
@@ -96,8 +98,8 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),
-                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        color.getField(),
+                        color.getTranslateLanguage()));
             }
 
         });
@@ -106,7 +108,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(holder.getAdapterPosition()).getField())
+                        color.getField())
 
                 );
             }

@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
 
-    private final ArrayList<Phrase> mDataSet;
+    private ArrayList<Phrase> mDataSet;
     private final int screenWidth;
     private Context context;
 
@@ -32,10 +32,10 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
     private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textTranslate;
-        private final TextView textDefault;
+        private TextView textTranslate;
+        private TextView textDefault;
 
-        private final TextView flagView;
+        private  TextView flagView;
         public Context context;
 
         public ViewHolder(View itemView) {
@@ -86,8 +86,9 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         //holder.getTextView().setText(R.string.app_name);
+        final Phrase flag = mDataSet.get(position);
         holder.getTextDefault().setText(mDataSet.get(holder.getAdapterPosition()).getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
@@ -109,8 +110,8 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),
-                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        flag.getField(),
+                        flag.getTranslateLanguage()));
             }
 
         });
@@ -119,8 +120,8 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(holder.getAdapterPosition()).getField(),
-                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+                        flag.getField(),
+                        flag.getTranslateLanguage()));
             }
 
         });
@@ -129,7 +130,7 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(holder.getAdapterPosition()).getField())
+                        flag.getField())
 
                 );
             }
