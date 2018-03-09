@@ -49,10 +49,11 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         screenWidth = size.x;
         screenHeight = size.y;
 
+        /*
         Toast toast = Toast.makeText(getApplicationContext(),
                 screenWidth + " " + screenHeight, Toast.LENGTH_SHORT);
         toast.show();
-
+        */
 
         GlideApp.with(this)
                 // .asDrawable()

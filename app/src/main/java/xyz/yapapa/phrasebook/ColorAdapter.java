@@ -71,7 +71,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         //holder.getTextView().setText(R.string.app_name);
         //holder.getTextColor().setText("C");
         //holder.getTextColor().setTextColor(mDataSet.get(position));
@@ -79,15 +79,15 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
         //holder.getTextColor().setBackgroundColor(mDataSet.get(position));
         //holder.getTextView().setText(mDataSet.get(position).getField());
         //holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-        holder.getImageTextDefault().setText(mDataSet.get(position).getField());
-        holder.getImageTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-        holder.getImageColor().setImageResource(mDataSet.get(position).getColor());
+        holder.getImageTextDefault().setText(mDataSet.get(holder.getAdapterPosition()).getField());
+        holder.getImageTextTranslate().setText(getStringByLocal(mDataSet.get(holder.getAdapterPosition()).getField(),mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
+        holder.getImageColor().setImageResource(mDataSet.get(holder.getAdapterPosition()).getColor());
 
         holder.getImageColor().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -96,8 +96,8 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),
-                        mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),
+                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -106,7 +106,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(position).getField())
+                        mDataSet.get(holder.getAdapterPosition()).getField())
 
                 );
             }

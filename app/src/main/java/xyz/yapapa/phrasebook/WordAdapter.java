@@ -113,14 +113,15 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         //holder.getTextView().setText(R.string.app_name);
-        holder.getTextDefault().setText(mDataSet.get(position).getField());
+        holder.getTextDefault().setText(mDataSet.get(holder.getAdapterPosition()).getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
 
         try {
-            holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(), mDataSet.get(position).getTranslateLanguage()));
+            holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(holder.getAdapterPosition()).getField(),
+                    mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
         }
         catch (Exception e){
             holder.getTextTranslate().setText(R.string.error);
@@ -137,7 +138,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         glideRequests
                // .asDrawable()
                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
-                .load(mStorageRef.child(mDataSet.get(position).getImage()))
+                .load(mStorageRef.child(mDataSet.get(holder.getAdapterPosition()).getImage()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .priority(Priority.LOW)
                 //.load(internetUrl)
@@ -156,8 +157,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),
-                        mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),
+                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -166,8 +167,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),
-                        mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),
+                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -176,7 +177,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(position).getField())
+                        mDataSet.get(holder.getAdapterPosition()).getField())
 
                 );
             }

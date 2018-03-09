@@ -523,6 +523,9 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
             mRecyclerView.setAdapter(wordAdapter);
             mRecyclerView.setItemViewCacheSize(0);
             mRecyclerView.getRecycledViewPool().setMaxRecycledViews(0,spanCount*4);
+
+
+
             /*
             mRecyclerView.setRecyclerListener(new RecyclerView.RecyclerListener() {
                 @Override
@@ -701,7 +704,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
                 @Override
                 public void onViewRecycled(RecyclerView.ViewHolder holder) {
                     FlagAdapter.ViewHolder photoViewHolder = (FlagAdapter.ViewHolder) holder;
-                    GlideApp.with(FlagholderFragment.this).clear(photoViewHolder.flagView);
+                    GlideApp.with(FlagholderFragment.this).clear(photoViewHolder.getFlagView());
                 }
             });
             mRecyclerView.getRecycledViewPool().setMaxRecycledViews(0,spanCount*5);

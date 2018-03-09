@@ -35,7 +35,7 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
         private final TextView textTranslate;
         private final TextView textDefault;
 
-        public final TextView flagView;
+        private final TextView flagView;
         public Context context;
 
         public ViewHolder(View itemView) {
@@ -86,12 +86,12 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         //holder.getTextView().setText(R.string.app_name);
-        holder.getTextDefault().setText(mDataSet.get(position).getField());
+        holder.getTextDefault().setText(mDataSet.get(holder.getAdapterPosition()).getField());
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
-        holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
+        holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(holder.getAdapterPosition()).getField(),mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
 
         //Toast toast = Toast.makeText(context,
         //        "создан" + (int) screenWidth, Toast.LENGTH_SHORT);
@@ -99,7 +99,7 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
         //Log.v("Glide", "создан= " +getStringById(mDataSet.get(position).getField())+ " " + position);
        // GlideSingleton.getGlide(context)
 
-        holder.getFlagView().setText(mDataSet.get(position).getImage());
+        holder.getFlagView().setText(mDataSet.get(holder.getAdapterPosition()).getImage());
 
 
 
@@ -109,8 +109,8 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),
-                        mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),
+                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -119,8 +119,8 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakTranslate(getStringByLocal(
-                        mDataSet.get(position).getField(),
-                        mDataSet.get(position).getTranslateLanguage()));
+                        mDataSet.get(holder.getAdapterPosition()).getField(),
+                        mDataSet.get(holder.getAdapterPosition()).getTranslateLanguage()));
             }
 
         });
@@ -129,7 +129,7 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 ttsListener.speakDefault(getStringById(
-                        mDataSet.get(position).getField())
+                        mDataSet.get(holder.getAdapterPosition()).getField())
 
                 );
             }
