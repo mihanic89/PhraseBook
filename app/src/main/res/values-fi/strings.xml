@@ -35,6 +35,7 @@
     <string name="tab29">S-Lausekkeista</string>
     <string name="tab30">Prepositioita</string>
     <string name="tab31">Maantiede</string>
+
     <string name="enLanguage">Englanti</string>
     <string name="ruLanguage">Venäläinen</string>
     <string name="frLanguage">Ranska</string>
@@ -472,7 +473,7 @@
     <string name="objects12">Paristo</string>
     <string name="objects13">Taskulamppusi</string>
     <string name="objects14">Tikkaat</string>
-    <string name="objects15">Whiskya</string>
+    <string name="objects15">Skotlantilainen</string>
     <string name="objects16">Renkaat</string>
     <string name="objects17">Vihapannan</string>
     <string name="objects18">Snell</string>
