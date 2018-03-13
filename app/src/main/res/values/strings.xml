@@ -10,6 +10,19 @@
     <string name="tryIt" >Try it! \n</string>
     <string name="shareVia" >Share via</string>
 
+    <string name="help1">Help 1 </string>
+    <string name="help1text" >Help 1 text</string>
+    <string name="help2" >Help 2 </string>
+    <string name="help2text" >Help 2 text</string>
+    <string name="help3" >Help 3 </string>
+    <string name="help3text" >Help 3 text</string>
+    <string name="help4" >Help 4 </string>
+    <string name="help4text" >Help 4 text</string>
+    <string name="help5" >Help 5 </string>
+    <string name="help5text" >Help 5 text</string>
+    <string name="help6" >Help 6 </string>
+    <string name="help6text" >Help 6 text</string>
+
 
 
     <string name="tab01">Alphabet</string>

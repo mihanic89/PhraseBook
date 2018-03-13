@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +39,37 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
 
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //  Initialize SharedPreferences
+                SharedPreferences getPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getBaseContext());
 
+                //  Create a new boolean and preference and set it to true
+                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                //  If the activity has never started before...
+                if (isFirstStart) {
+
+                    //  Launch app intro
+                    Intent i = new Intent(StartActivity.this, IntroActivity.class);
+                    startActivity(i);
+
+                    //  Make a new preferences editor
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    //  Edit preference to make it false because we don't want this to run again
+                    e.putBoolean("firstStart", false);
+
+                    //  Apply changes
+                    e.apply();
+                }
+            }
+        });
+
+        // Start the thread
+        t.start();
 
 
         setContentView(R.layout.activity_start);
@@ -205,7 +236,8 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void help (View v){
-
+        Intent i = new Intent(StartActivity.this, IntroActivity.class);
+        startActivity(i);
     }
 
     public void share (View v){

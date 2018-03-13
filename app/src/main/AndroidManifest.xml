@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartActivity" />
         </activity>
+        <activity
+            android:name=".IntroActivity">
+
+        </activity>
     </application>
 
 </manifest>
