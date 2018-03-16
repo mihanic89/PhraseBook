@@ -38,7 +38,7 @@
         <android.support.text.emoji.widget.EmojiAppCompatTextView
             android:id="@+id/flagView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_text_height"
+            android:layout_height="wrap_content"
             android:background="@color/backgroud_flag"
             android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal"
