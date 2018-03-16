@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class PhrasebookApplication extends Application {
 
-    private static final String TAG = "EmojiCompatApplication";
+    private static final String TAG = "PhrasebookApplication";
 
     /** Change this to {@code false} when you want to use the downloadable Emoji font. */
     private static final boolean USE_BUNDLED_EMOJI = true;
