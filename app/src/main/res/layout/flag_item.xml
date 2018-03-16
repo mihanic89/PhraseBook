@@ -35,7 +35,7 @@
             tools:text="DefaultText" />
 
 
-        <TextView
+        <android.support.text.emoji.widget.EmojiAppCompatTextView
             android:id="@+id/flagView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_text_height"
