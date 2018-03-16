@@ -4,6 +4,23 @@
     <string name="button_learn">学习</string>
     <string name="button_training">火车</string>
 
+    <string name="help1">主屏幕上</string>
+    <string name="help1text">选择的语言去学习，分享或呼吁帮助</string>
+    <string name="help2">名单的语言</string>
+    <string name="help2text">选择的语言</string>
+    <string name="help3">标签</string>
+    <string name="help3text">选择类别</string>
+    <string name="help4">翻译</string>
+    <string name="help4text">当你点击图片或翻译文本，你将听到翻译</string>
+    <string name="help5">原始的</string>
+    <string name="help5text">当你点击的原始案文，该原始将被起</string>
+    <string name="help6">原来的号码</string>
+    <string name="help6text">有很长的点击次数将会宣布在原来的名字</string>
+    <string name="help7">互联网</string>
+    <string name="help7text">需要下载图像，确定你有一个无线网络连接，或可移动业务</string>
+    <string name="help8">语音的设置</string>
+    <string name="help8text">如果声音听起来并不正确或不玩了回，检查设置。 安装语音合成器从谷歌，如果你有另一个</string>
+
     <string name="tab01">字母表</string>
     <string name="tab02">数量</string>
     <string name="tab03">颜色</string>

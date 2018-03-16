@@ -3,8 +3,23 @@
     <string name="app_name">Розмовник</string>
     <string name="button_learn">Вчимо</string>
     <string name="button_training">Тренуємо</string>
-    
 
+    <string name="help1">Домашній екран</string>
+    <string name="help1text">Виберіть мову, піти вчитися, ділитися або викликати допомогу знову</string>
+    <string name="help2">Список мов</string>
+    <string name="help2text">Виберіть мову</string>
+    <string name="help3">Вкладки</string>
+    <string name="help3text">Виберіть категорію</string>
+    <string name="help4">Переклад</string>
+    <string name="help4text">При натисканні на картинку або перекладений текст, ви зможете почути переклад</string>
+    <string name="help5">Оригінал</string>
+    <string name="help5text">При натисканні на вихідний текст, оригінал буде відтворюватися</string>
+    <string name="help6">Оригінальний номер</string>
+    <string name="help6text">З довгим клацанням по кількості буде оголошено первісна назва</string>
+    <string name="help7">Інтернет</string>
+    <string name="help7text">Повинен для завантаження зображень, переконайтеся, що у вас є Wi-Fi або мобільний трафік</string>
+    <string name="help8">Параметри мовлення</string>
+    <string name="help8text">Якщо звучать голоси не правильно або не відтворюється, перевірте налаштування. Для того щоб встановити синтезатор мови від Google, якщо у вас є інший</string>
 
     <string name="tab01">Алфавіт</string>
     <string name="tab02">Числа</string>

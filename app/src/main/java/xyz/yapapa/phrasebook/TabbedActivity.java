@@ -3,10 +3,10 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -29,6 +29,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 
 import java.util.ArrayList;
@@ -60,10 +63,14 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
      */
     private ViewPager mViewPager;
 
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        MobileAds.initialize(this, "ca-app-pub-2888343178529026~4340757150");
 
 
         setContentView(R.layout.activity_tabbed);
@@ -165,6 +172,11 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
             }
         });
         */
+
+
+        mAdView = findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     private void createTabs() {
@@ -400,7 +412,13 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
     @Override
     public void speakTranslate(String text) {
         try {
-        ttsTranslate.speak(text, TextToSpeech.QUEUE_FLUSH, null,"id1");
+            if (Build.VERSION.SDK_INT<21){
+
+                ttsTranslate.speak(text, TextToSpeech.QUEUE_FLUSH,null);
+            }
+            else {
+                ttsTranslate.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1");
+            }
         }
         catch (Exception e){
 
@@ -417,7 +435,12 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
         //ttsTranslate.speak(text, TextToSpeech.QUEUE_FLUSH, null,"id1");
         try {
-            ttsDefault.speak(text, TextToSpeech.QUEUE_FLUSH, null,"id1");
+            if (Build.VERSION.SDK_INT<21){
+                ttsDefault.speak(text, TextToSpeech.QUEUE_FLUSH,null);
+            }
+            else {
+                ttsDefault.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1");
+            }
         }
         catch (Exception e){
 
@@ -429,6 +452,23 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         */
     }
 
+
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
 
     @Override
     public void onDestroy() {
@@ -445,6 +485,11 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(STATE_POSITION_INDEX, mViewPager.getCurrentItem());
         editor.apply();
+
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+
         super.onDestroy();
     }
 

@@ -3,7 +3,6 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
@@ -17,7 +16,9 @@ import android.widget.Spinner;
 
 
 import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +32,17 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     private List<String> languages;
     private List<String> locales;
     private int screenWidth, screenHeight;
+    private AdView mAdView;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+       MobileAds.initialize(this, "ca-app-pub-2888343178529026~4340757150");
 
 
         Thread t = new Thread(new Runnable() {
@@ -89,17 +95,17 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                 // .asDrawable()
                 // .load(mStorageRef.child(mDataSet.get(position).getImage()))
                 .load(R.mipmap.background)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+               // .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .priority(Priority.LOW)
                 //.load(internetUrl)
                 //.skipMemoryCache(true)
-                .override((int)screenWidth/3, (int) screenHeight/3)
+                .override((int)screenWidth/2, (int) screenHeight/2)
                 .fitCenter()
                 // .thumbnail()
                 //.error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(getResources().getColor(R.color.background)))
                 //.placeholder(R.mipmap.placeholder)
-                .transition(withCrossFade(700))
+                .transition(withCrossFade(1000))
                 .into((ImageView) findViewById(R.id.imageViewBackground));
 
         SharedPreferences sharedPref = this.getSharedPreferences("language",Context.MODE_PRIVATE);
@@ -125,6 +131,12 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         String languageTranslate = sharedPref.getString("languageTranslate", "en");
 
         setSpinner (languageTranslate);
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
     }
 
     /*создание списка языков на основе языка телефона, язык телефона исключается
@@ -240,6 +252,13 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         startActivity(i);
     }
 
+    public void settings (View v){
+        Intent intent = new Intent();
+        intent.setAction("com.android.settings.TTS_SETTINGS");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(intent);
+    }
+
     public void share (View v){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
@@ -315,5 +334,33 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+    /** Called when leaving the activity */
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }

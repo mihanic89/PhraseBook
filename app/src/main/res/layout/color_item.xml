@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -19,17 +20,16 @@
             android:id="@+id/colorTextDefault"
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
+            android:layout_height="@dimen/card_text_height"
+
             android:background="@color/colorPrimary"
             android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:padding="@dimen/text_padding"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+
+
             android:textColor="#ffffff"
-            android:textSize="@dimen/default_text_size"
+            app:autoSizeTextType="uniform"
+            android:padding="@dimen/card_dimen"
             tools:text="DefaultText" />
 
 
@@ -49,18 +49,16 @@
         <TextView
             android:id="@+id/colorTextTranslate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/card_text_height"
 
-            android:autoSizeTextType="uniform"
+
             android:background="@color/colorPrimaryDark"
             android:fontFamily="@font/bubblegum_sans"
             android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:padding="@dimen/text_padding"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+
             android:textColor="#ffffff"
-            android:textSize="@dimen/translate_text_size"
+            app:autoSizeTextType="uniform"
+            android:padding="@dimen/card_dimen"
             tools:text="TranslateText" />
 
 

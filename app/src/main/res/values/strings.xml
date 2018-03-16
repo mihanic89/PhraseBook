@@ -3,25 +3,29 @@
     <string name="button_help" translatable="false">\?</string>
     <string name="button_learn">Learn</string>
     <string name="button_training">Training</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="error">Error</string>
+    <string name="title_activity_tabbed" translatable="false">TabbedActivity</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="error" translatable="false">Error</string>
     <string name="link" translatable="false">https://play.google.com/store/apps/dev?id=8095982564959788470</string>
-    <string name="tryIt" >Try it! \n</string>
-    <string name="shareVia" >Share via</string>
+    <string name="tryIt" translatable="false">Try it! \n</string>
+    <string name="shareVia" translatable="false" >Share via</string>
 
-    <string name="help1">Help 1 </string>
-    <string name="help1text" >Help 1 text</string>
-    <string name="help2" >Help 2 </string>
-    <string name="help2text" >Help 2 text</string>
-    <string name="help3" >Help 3 </string>
-    <string name="help3text" >Help 3 text</string>
-    <string name="help4" >Help 4 </string>
-    <string name="help4text" >Help 4 text</string>
-    <string name="help5" >Help 5 </string>
-    <string name="help5text" >Help 5 text</string>
-    <string name="help6" >Help 6 </string>
-    <string name="help6text" >Help 6 text</string>
+    <string name="help1">Home screen</string>
+    <string name="help1text">Select a language, go to study, share or call help again</string>
+    <string name="help2">List of languages</string>
+    <string name="help2text">Select language</string>
+    <string name="help3">Tabs</string>
+    <string name="help3text">Select category</string>
+    <string name="help4">Translation</string>
+    <string name="help4text">When you click on a picture or translated text, you will hear the translation</string>
+    <string name="help5">Original</string>
+    <string name="help5text">When you click on the original text, the original will be played</string>
+    <string name="help6">The original numbers</string>
+    <string name="help6text">With a long click on the number will be announced the original name</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Needs to download images, make sure you have a Wi-Fi connection or available mobile traffic</string>
+    <string name="help8">Speech settings</string>
+    <string name="help8text">If the voice does not sound correctly or does not play back, check the settings. To install the speech synthesizer from Google, if you have another</string>
 
 
 
@@ -647,7 +651,7 @@
     <string name="art29">Thriller</string>
     <string name="art30">Action Film</string>
     <string name="school01">School</string>
-    <string name="school02">Disciple</string>
+    <string name="school02">Pupil</string>
     <string name="school03">Teacher</string>
     <string name="school04">Textbook</string>
     <string name="school05">Lesson</string>
@@ -806,7 +810,7 @@
     <string name="phrases12">Thanks.</string>
     <string name="phrases13">Excuse Me.</string>
     <string name="phrases14">Never Mind.</string>
-    <string name="phrases15">Everything Is Ok</string>
+    <string name="phrases15">Everything Is OK</string>
     <string name="phrases16">Don"'"T Worry About It</string>
     <string name="phrases17">I"'"M Catching On.</string>
     <string name="phrases18">I Do Not Understand.</string>

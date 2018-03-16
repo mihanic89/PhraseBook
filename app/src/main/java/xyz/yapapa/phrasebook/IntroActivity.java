@@ -40,6 +40,14 @@ public class IntroActivity extends AppIntro2 {
                 getString(R.string.help6text),
                 R.mipmap.intro6, Color.parseColor("#41ba7a")));
 
+        addSlide(AppIntroFragment.newInstance(getString(R.string.help7),
+                getString(R.string.help7text),
+                R.mipmap.intro7, Color.parseColor("#41ba7a")));
+
+        addSlide(AppIntroFragment.newInstance(getString(R.string.help8),
+                getString(R.string.help8text),
+                R.mipmap.intro8, Color.parseColor("#41ba7a")));
+
         showSkipButton(true);
         setProgressButtonEnabled(true);
 

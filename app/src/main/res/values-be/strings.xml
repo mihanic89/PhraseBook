@@ -4,6 +4,22 @@
     <string name="button_learn">Вучым</string>
     <string name="button_training">Трэніруем</string>
 
+    <string name="help1">Хатні экран</string>
+    <string name="help1text">Абярыце мову, пайсці вучыцца, дзяліцца або выклікаць дапамогу зноў</string>
+    <string name="help2">Спіс моў</string>
+    <string name="help2text">Абярыце мову</string>
+    <string name="help3">Ўкладкі</string>
+    <string name="help3text">Выберыце катэгорыю</string>
+    <string name="help4">Пераклад</string>
+    <string name="help4text">Пры націску на малюнак або перакладзены тэкст, вы зможаце пачуць пераклад</string>
+    <string name="help5">Арыгінал</string>
+    <string name="help5text">Пры націску на зыходны тэкст, арыгінал будзе прайгравацца</string>
+    <string name="help6">Арыгінальны нумар</string>
+    <string name="help6text">З доўгім пстрычкай па колькасці будзе абвешчана першапачатковая назва</string>
+    <string name="help7">Інтэрнэт</string>
+    <string name="help7text">Павінен для загрузкі малюнкаў, пераканайцеся, што ў вас ёсць Wi-Fi або мабільны трафік</string>
+    <string name="help8">Параметры прамовы</string>
+    <string name="help8text">Калі галасы не гучаць правільна ці не прайграваецца, калі ласка, праверце налады. Для таго каб усталяваць сінтэзатар прамовы ад Google, калі ў вас ёсць іншы</string>
    
     <string name="tab01">Алфавіт</string>
     <string name="tab02">Колькасці</string>

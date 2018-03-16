@@ -5,8 +5,23 @@
     <string name="button_training">Alleniamo</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
-    
 
+    <string name="help1">Schermata Home</string>
+    <string name="help1text">Selezionare una lingua, andare a studiare, condividere o chiedere aiuto di nuovo</string>
+    <string name="help2">Elenco delle lingue</string>
+    <string name="help2text">Selezionare la lingua</string>
+    <string name="help3">Schede</string>
+    <string name="help3text">Selezionare la categoria</string>
+    <string name="help4">Traduzione</string>
+    <string name="help4text">Quando si fa clic su un"'"immagine o un testo tradotto, si sente la traduzione</string>
+    <string name="help5">Originale</string>
+    <string name="help5text">Quando si fa clic sul testo originale, l"'"originale verrà giocato</string>
+    <string name="help6">I numeri originali</string>
+    <string name="help6text">Con un clic lungo sul numero sarà annunciato il nome originale</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Ha bisogno di scaricare le immagini, assicurarsi di disporre di una connessione Wi-Fi o rete cellulare del traffico</string>
+    <string name="help8">Impostazioni vocali</string>
+    <string name="help8text">Se la voce non suona correttamente o non riprodurre, controllare le impostazioni. Per installare il sintetizzatore vocale di Google, se si dispone di un altro</string>
 
     <string name="tab01">Alfabeto</string>
     <string name="tab02">I Numeri</string>

@@ -12,11 +12,15 @@
     <string name="help3" >Вкладки</string>
     <string name="help3text" >Выберите категорию</string>
     <string name="help4" >Перевод</string>
-    <string name="help4text" >При нажатии на картинку или переведенный текст вы услишите перевод</string>
+    <string name="help4text" >При нажатии на картинку или переведенный текст вы услышите перевод</string>
     <string name="help5" >Оригинал</string>
     <string name="help5text" >При нажатии на оригинальный текст будет воспроизведен оригинал</string>
     <string name="help6" >Оригинал цифр</string>
     <string name="help6text" >При долгом клике по цифре будет озвучено оригинальное название</string>
+    <string name="help7" >Интернет</string>
+    <string name="help7text" >Требуется скачать изображения, убедитесь в наличии подключения по wi-fi или доступного объема мобильного трафика</string>
+    <string name="help8" >Настройки речи</string>
+    <string name="help8text" >Если голос звучит некорректно или не воспроизводится, проверьте настройки. Установить синтезатор речи от Google, если установлен другой</string>
 
     <string name="enLanguage">Английский</string>
     <string name="ruLanguage">Русский</string>

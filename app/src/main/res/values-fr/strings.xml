@@ -7,6 +7,23 @@
     <string name="action_settings">Settings</string>
 
 
+    <string name="help1">L"'"écran d"'"accueil</string>
+    <string name="help1text">Sélectionnez une langue, d"'"étudier, de partager ou d"'"appel d"'"aide encore une fois</string>
+    <string name="help2">Liste des langues</string>
+    <string name="help2text">Sélectionnez la langue</string>
+    <string name="help3">Onglets</string>
+    <string name="help3text">Sélectionnez une catégorie</string>
+    <string name="help4">Traduction</string>
+    <string name="help4text">Lorsque vous cliquez sur une image ou un texte traduit, vous entendrez la traduction</string>
+    <string name="help5">D"'"origine</string>
+    <string name="help5text">Lorsque vous cliquez sur le texte original, l"'"original sera joué</string>
+    <string name="help6">Les numéros originaux</string>
+    <string name="help6text">Avec un clic long sur le nombre sera annoncé le nom d"'"origine</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Besoin de télécharger des images, assurez-vous d"'"avoir une connexion Wi-Fi ou mobile, le trafic</string>
+    <string name="help8">Discours paramètres</string>
+    <string name="help8text">Si la voix ne sonne pas correctement ou ne marche pas, vérifiez les paramètres. Pour installer la synthèse vocale de Google, si vous avez un autre</string>
+
     <string name="tab01">L"'"Alphabet</string>
     <string name="tab02">Le Nombre De</string>
     <string name="tab03">Couleur</string>

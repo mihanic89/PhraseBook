@@ -6,7 +6,22 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
 
-
+    <string name="help1">Startseite</string>
+    <string name="help1text">Wählen Sie eine Sprache, die gehen, um zu studieren, zu teilen oder Hilfe rufen wieder</string>
+    <string name="help2">Liste der Sprachen</string>
+    <string name="help2text">Wählen Sie die Sprache</string>
+    <string name="help3">Tabs</string>
+    <string name="help3text">Wählen Sie die Kategorie</string>
+    <string name="help4">Übersetzung</string>
+    <string name="help4text">Wenn Sie klicken Sie auf ein Bild oder einen text übersetzt, dann hören Sie die übersetzung</string>
+    <string name="help5">Original</string>
+    <string name="help5text">Wenn Sie auf den ursprünglichen text, wird das original gespielt werden</string>
+    <string name="help6">Die original-Nummern</string>
+    <string name="help6text">Mit einem langen Klick auf die Zahl wird bekannt gegeben, den ursprünglichen Namen</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Muss die Bilder herunterladen, stellen Sie sicher, Sie haben eine Wi-Fi-Verbindung oder verfügbaren mobile-traffic</string>
+    <string name="help8">Einstellungen Sprachausgabe</string>
+    <string name="help8text">Wenn die Stimme klingt nicht richtig oder gar nicht abgespielt werden, überprüfen Sie die Einstellungen. Installieren Sie den Sprachsynthesizer von Google, wenn Sie eine andere</string>
 
     <string name="tab01">Alphabet</string>
     <string name="tab02">Zahlen</string>

@@ -4,7 +4,22 @@
     <string name="button_learn">Ensinamos</string>
     <string name="button_training">Treinamos</string>
 
-
+    <string name="help1">Ecrã principal</string>
+    <string name="help1text">Selecione um idioma, vá estudar, compartilhar ou pedir ajuda novamente</string>
+    <string name="help2">Lista de idiomas</string>
+    <string name="help2text">Escolha o idioma</string>
+    <string name="help3">Guias</string>
+    <string name="help3text">Selecione a categoria</string>
+    <string name="help4">Tradução</string>
+    <string name="help4text">Quando você clicar em uma imagem ou texto traduzido, você vai ouvir a tradução</string>
+    <string name="help5">Original</string>
+    <string name="help5text">Quando você clicar no texto original, o original será jogado</string>
+    <string name="help6">Os números originais</string>
+    <string name="help6text">Com um clique longo sobre o número será anunciado o nome original</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Precisa baixar imagens, certifique-se de que você tem uma conexão Wi-Fi ou de celular disponível tráfego</string>
+    <string name="help8">Configurações de fala</string>
+    <string name="help8text">Se a voz não soa corretamente ou não for reproduzido, verifique as configurações. Para instalar o sintetizador de voz do Google, se você tiver outro</string>
 
     <string name="tab01">O Alfabeto</string>
     <string name="tab02">O Número De</string>

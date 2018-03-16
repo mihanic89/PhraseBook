@@ -4,6 +4,23 @@
     <string name="button_learn">Oppia</string>
     <string name="button_training">Juna</string>
 
+    <string name="help1">Kotiin näytön</string>
+    <string name="help1text">Valitse kieli, mennä opiskelemaan, jakaa tai kutsua apua uudelleen</string>
+    <string name="help2">Luettelo kielistä</string>
+    <string name="help2text">Valitse kieli</string>
+    <string name="help3">Välilehdet</string>
+    <string name="help3text">Valitse luokka</string>
+    <string name="help4">Käännös</string>
+    <string name="help4text">Kun klikkaat kuvaa tai käännetty teksti, kuulet käännös</string>
+    <string name="help5">Alkuperäinen</string>
+    <string name="help5text">Kun klikkaat alkuperäinen, ja alkuperäinen teksti toistetaan</string>
+    <string name="help6">Alkuperäinen numerot</string>
+    <string name="help6text">Pitkä klikkaa numero julkistetaan alkuperäinen nimi</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Tarvitsee ladata kuvia, varmista, että sinulla on Wi-Fi-yhteyden tai saatavilla mobiili liikenne</string>
+    <string name="help8">Speech-asetukset</string>
+    <string name="help8text">Jos ääni ei kuulosta oikein tai ei pelata takaisin, tarkista asetukset. Asentaa puhesyntetisaattori Google, jos sinulla on toinen</string>
+
     <string name="tab01">Aakkosesi</string>
     <string name="tab02">Luvut</string>
     <string name="tab03">Värit</string>

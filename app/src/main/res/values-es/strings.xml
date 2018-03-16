@@ -6,6 +6,22 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="help1">Pantalla de inicio</string>
+    <string name="help1text">Seleccione un idioma, ir a estudiar, compartir o pedir ayuda de nuevo</string>
+    <string name="help2">Lista de idiomas</string>
+    <string name="help2text">Seleccionar idioma</string>
+    <string name="help3">Fichas</string>
+    <string name="help3text">Seleccione la categoría</string>
+    <string name="help4">Traducción</string>
+    <string name="help4text">Cuando haga clic en una imagen o un texto traducido, usted va a escuchar la traducción</string>
+    <string name="help5">Original</string>
+    <string name="help5text">Cuando usted haga clic en el texto original, el original se jugará</string>
+    <string name="help6">Los números originales</string>
+    <string name="help6text">Con una larga haga clic en el número será anunciado el nombre original</string>
+    <string name="help7">Internet</string>
+    <string name="help7text">Necesidades para descargar las imágenes, asegúrese de que usted tiene una conexión Wi-Fi o móvil disponible al tráfico</string>
+    <string name="help8">Configuración de voz</string>
+    <string name="help8text">Si la voz no suena correctamente o no se reproduce, compruebe la configuración. Para instalar el sintetizador de voz de Google, si tienes otro</string>
 
     <string name="tab01">El Alfabeto</string>
     <string name="tab02">El Número De</string>
