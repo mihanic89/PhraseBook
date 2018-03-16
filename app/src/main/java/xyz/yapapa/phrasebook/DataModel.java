@@ -613,7 +613,7 @@ class DataModel {
         food = new ArrayList<>();
         food.add(new Phrase(R.string.food01, "food01.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food02, "food02.png", defaultLanguage, translateLanguage));
-        food.add(new Phrase(R.string.food03, "food03.png", defaultLanguage, translateLanguage));
+        food.add(new Phrase(R.string.food03, "food03.gif", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food04, "food04.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food05, "food05.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food06, "food06.png", defaultLanguage, translateLanguage));
@@ -631,7 +631,7 @@ class DataModel {
         food.add(new Phrase(R.string.food18, "food18.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food19, "food19.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food20, "food20.png", defaultLanguage, translateLanguage));
-        food.add(new Phrase(R.string.food21, "food21.png", defaultLanguage, translateLanguage));
+        food.add(new Phrase(R.string.food21, "food21.gif", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food22, "food22.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food23, "food23.png", defaultLanguage, translateLanguage));
         food.add(new Phrase(R.string.food24, "food24.png", defaultLanguage, translateLanguage));
@@ -700,7 +700,7 @@ class DataModel {
 
         berries = new ArrayList<>();
         berries.add(new Phrase(R.string.berries01, "berries01.png", defaultLanguage, translateLanguage));
-        berries.add(new Phrase(R.string.berries02, "berries02.png", defaultLanguage, translateLanguage));
+        berries.add(new Phrase(R.string.berries02, "berries02.gif", defaultLanguage, translateLanguage));
         berries.add(new Phrase(R.string.berries03, "berries03.png", defaultLanguage, translateLanguage));
         berries.add(new Phrase(R.string.berries04, "berries04.png", defaultLanguage, translateLanguage));
         berries.add(new Phrase(R.string.berries05, "berries05.png", defaultLanguage, translateLanguage));
@@ -724,7 +724,7 @@ class DataModel {
         flowers.add(new Phrase(R.string.flowers05, "flowers05.png", defaultLanguage, translateLanguage));
         flowers.add(new Phrase(R.string.flowers06, "flowers06.png", defaultLanguage, translateLanguage));
         flowers.add(new Phrase(R.string.flowers07, "flowers07.png", defaultLanguage, translateLanguage));
-        flowers.add(new Phrase(R.string.flowers08, "flowers08.png", defaultLanguage, translateLanguage));
+        flowers.add(new Phrase(R.string.flowers08, "flowers08.gif", defaultLanguage, translateLanguage));
         flowers.add(new Phrase(R.string.flowers09, "flowers09.png", defaultLanguage, translateLanguage));
         flowers.add(new Phrase(R.string.flowers10, "flowers10.png", defaultLanguage, translateLanguage));
         flowers.add(new Phrase(R.string.flowers11, "flowers11.png", defaultLanguage, translateLanguage));
@@ -735,7 +735,7 @@ class DataModel {
 
         body = new ArrayList<>();
         body.add(new Phrase(R.string.body01, "body01.png", defaultLanguage, translateLanguage));
-        body.add(new Phrase(R.string.body02, "body02.png", defaultLanguage, translateLanguage));
+        body.add(new Phrase(R.string.body02, "body02.gif", defaultLanguage, translateLanguage));
         body.add(new Phrase(R.string.body03, "body03.png", defaultLanguage, translateLanguage));
         body.add(new Phrase(R.string.body04, "body04.png", defaultLanguage, translateLanguage));
         body.add(new Phrase(R.string.body05, "body05.png", defaultLanguage, translateLanguage));
@@ -779,8 +779,8 @@ class DataModel {
         emotions.add(new Phrase(R.string.emotions17, "emotions17.gif", defaultLanguage, translateLanguage));
 
         animals = new ArrayList<>();
-        animals.add(new Phrase(R.string.animals01, "animals01.png", defaultLanguage, translateLanguage));
-        animals.add(new Phrase(R.string.animals02, "animals02.png", defaultLanguage, translateLanguage));
+        animals.add(new Phrase(R.string.animals01, "animals01.gif", defaultLanguage, translateLanguage));
+        animals.add(new Phrase(R.string.animals02, "animals02.gif", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals03, "animals03.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals04, "animals04.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals05, "animals05.png", defaultLanguage, translateLanguage));
@@ -798,7 +798,7 @@ class DataModel {
         animals.add(new Phrase(R.string.animals17, "animals17.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals18, "animals18.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals19, "animals19.png", defaultLanguage, translateLanguage));
-        animals.add(new Phrase(R.string.animals20, "animals20.png", defaultLanguage, translateLanguage));
+        animals.add(new Phrase(R.string.animals20, "animals20.gif", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals21, "animals21.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals22, "animals22.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals23, "animals23.png", defaultLanguage, translateLanguage));
@@ -829,7 +829,7 @@ class DataModel {
         animals.add(new Phrase(R.string.animals48, "animals48.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals49, "animals49.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals50, "animals50.png", defaultLanguage, translateLanguage));
-        animals.add(new Phrase(R.string.animals51, "animals51.png", defaultLanguage, translateLanguage));
+        animals.add(new Phrase(R.string.animals51, "animals51.gif", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals52, "animals52.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals53, "animals53.png", defaultLanguage, translateLanguage));
         animals.add(new Phrase(R.string.animals54, "animals54.png", defaultLanguage, translateLanguage));
@@ -974,7 +974,7 @@ class DataModel {
         transport.add(new Phrase(R.string.transport12, "transport12.png", defaultLanguage, translateLanguage));
 
         sport = new ArrayList<>();
-        sport.add(new Phrase(R.string.sport01, "sport01.png", defaultLanguage, translateLanguage));
+        sport.add(new Phrase(R.string.sport01, "sport01.gif", defaultLanguage, translateLanguage));
         sport.add(new Phrase(R.string.sport02, "sport02.png", defaultLanguage, translateLanguage));
         sport.add(new Phrase(R.string.sport03, "sport03.png", defaultLanguage, translateLanguage));
         sport.add(new Phrase(R.string.sport04, "sport04.png", defaultLanguage, translateLanguage));
@@ -1105,7 +1105,7 @@ class DataModel {
         nature = new ArrayList<>();
         nature.add(new Phrase(R.string.nature01, "nature01.png", defaultLanguage, translateLanguage));
         nature.add(new Phrase(R.string.nature02, "nature02.png", defaultLanguage, translateLanguage));
-        nature.add(new Phrase(R.string.nature03, "nature03.png", defaultLanguage, translateLanguage));
+        nature.add(new Phrase(R.string.nature03, "nature03.gif", defaultLanguage, translateLanguage));
         nature.add(new Phrase(R.string.nature04, "nature04.png", defaultLanguage, translateLanguage));
         nature.add(new Phrase(R.string.nature05, "nature05.png", defaultLanguage, translateLanguage));
         nature.add(new Phrase(R.string.nature06, "nature06.png", defaultLanguage, translateLanguage));
@@ -1168,7 +1168,7 @@ class DataModel {
         verbs = new ArrayList<>();
         verbs.add(new Phrase(R.string.verbs01, "verbs01.png", defaultLanguage, translateLanguage));
         verbs.add(new Phrase(R.string.verbs02, "verbs02.png", defaultLanguage, translateLanguage));
-        verbs.add(new Phrase(R.string.verbs03, "verbs03.png", defaultLanguage, translateLanguage));
+        verbs.add(new Phrase(R.string.verbs03, "verbs03.gif", defaultLanguage, translateLanguage));
         verbs.add(new Phrase(R.string.verbs04, "verbs04.png", defaultLanguage, translateLanguage));
         verbs.add(new Phrase(R.string.verbs05, "verbs05.png", defaultLanguage, translateLanguage));
         verbs.add(new Phrase(R.string.verbs06, "verbs06.png", defaultLanguage, translateLanguage));
