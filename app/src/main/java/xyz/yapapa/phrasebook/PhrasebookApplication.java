@@ -7,6 +7,7 @@ import android.support.text.emoji.FontRequestEmojiCompatConfig;
 import android.support.text.emoji.bundled.BundledEmojiCompatConfig;
 import android.support.v4.provider.FontRequest;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by Misha on 17.03.2018.
@@ -39,12 +40,23 @@ public class PhrasebookApplication extends Application {
                     .registerInitCallback(new EmojiCompat.InitCallback() {
                         @Override
                         public void onInitialized() {
+
                             Log.i(TAG, "EmojiCompat initialized");
+                            /*
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "ok", Toast.LENGTH_SHORT);
+                            toast.show();
+                            */
                         }
 
                         @Override
                         public void onFailed(@Nullable Throwable throwable) {
                             Log.e(TAG, "EmojiCompat initialization failed", throwable);
+                            /*
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "error", Toast.LENGTH_SHORT);
+                            toast.show();
+                            */
                         }
                     });
         }
