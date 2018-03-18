@@ -2,6 +2,7 @@ package xyz.yapapa.phrasebook;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -74,6 +75,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
 
         setContentView(R.layout.activity_tabbed);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
          screenWidth = size.x;
@@ -93,7 +95,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
                 //.error(R.mipmap.ic_launcher)
                 .placeholder(new ColorDrawable(getResources().getColor(R.color.background)))
                 //.placeholder(R.mipmap.placeholder)
-                .transition(withCrossFade(700))
+                .transition(withCrossFade(1000))
                 .into((ImageView) findViewById(R.id.imageViewBackground2));
 
 
@@ -175,7 +177,9 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
 
         mAdView = findViewById(R.id.adView2);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3")
+                .build();
         mAdView.loadAd(adRequest);
     }
 

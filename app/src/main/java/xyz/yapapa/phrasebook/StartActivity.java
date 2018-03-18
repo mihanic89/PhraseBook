@@ -3,6 +3,7 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
@@ -79,6 +80,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
         setContentView(R.layout.activity_start);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
@@ -133,7 +135,9 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         setSpinner (languageTranslate);
 
         mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3")
+                    .build();
         mAdView.loadAd(adRequest);
 
 

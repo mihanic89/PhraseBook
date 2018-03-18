@@ -3,7 +3,7 @@
     <string name="app_name">Иностранные языки</string>
     <string name="button_learn">Учим</string>
     <string name="button_training">Тренируем</string>
-    <string name="title_activity_tabbed">Закладки</string>
+
 
     <string name="help1">Главный экран</string>
     <string name="help1text" >Выберите язык, перейдите к изучению, поделитесь или вызовите снова справку</string>

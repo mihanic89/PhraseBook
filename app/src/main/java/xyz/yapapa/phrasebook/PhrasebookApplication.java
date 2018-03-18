@@ -41,7 +41,7 @@ public class PhrasebookApplication extends Application {
                         @Override
                         public void onInitialized() {
 
-                            Log.i(TAG, "EmojiCompat initialized");
+                           // Log.i(TAG, "EmojiCompat initialized");
                             /*
                             Toast toast = Toast.makeText(getApplicationContext(),
                                     "ok", Toast.LENGTH_SHORT);
@@ -51,7 +51,7 @@ public class PhrasebookApplication extends Application {
 
                         @Override
                         public void onFailed(@Nullable Throwable throwable) {
-                            Log.e(TAG, "EmojiCompat initialization failed", throwable);
+                            //Log.e(TAG, "EmojiCompat initialization failed", throwable);
                             /*
                             Toast toast = Toast.makeText(getApplicationContext(),
                                     "error", Toast.LENGTH_SHORT);

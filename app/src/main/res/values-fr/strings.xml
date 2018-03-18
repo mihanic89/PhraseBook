@@ -3,8 +3,7 @@
     <string name="app_name">Guide De Conversation</string>
     <string name="button_learn">Enseignons</string>
     <string name="button_training">Formons</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="action_settings">Settings</string>
+
 
 
     <string name="help1">L"'"écran d"'"accueil</string>
@@ -54,7 +53,7 @@
     <string name="tab28">Les Phrases</string>
     <string name="tab29">Les Prépositions</string>
     <string name="tab30">Géographie</string>
-
+    <string name="tab31">Géographie</string>
     <string name="enLanguage">L"'"Anglais</string>
     <string name="ruLanguage">Le Russe</string>
     <string name="frLanguage">Le Français</string>

@@ -4,7 +4,7 @@
     <string name="button_learn">Enseñamos</string>
     <string name="button_training">Entrenamos</string>
 
-    <string name="action_settings">Settings</string>
+
 
     <string name="help1">Pantalla de inicio</string>
     <string name="help1text">Seleccione un idioma, ir a estudiar, compartir o pedir ayuda de nuevo</string>
@@ -53,7 +53,7 @@
     <string name="tab28">Frases</string>
     <string name="tab29">Las Preposiciones</string>
     <string name="tab30">La Geografía De La</string>
-
+    <string name="tab31">La Geografía De La</string>
     <string name="enLanguage">Inglés</string>
     <string name="ruLanguage">El Ruso</string>
     <string name="frLanguage">Francés</string>

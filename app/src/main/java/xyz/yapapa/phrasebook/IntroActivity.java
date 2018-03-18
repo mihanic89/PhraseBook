@@ -1,6 +1,7 @@
 package xyz.yapapa.phrasebook;
 
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -18,7 +19,7 @@ public class IntroActivity extends AppIntro2 {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         addSlide(AppIntroFragment.newInstance(getString(R.string.help1),
                 getString(R.string.help1text),

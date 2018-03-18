@@ -3,8 +3,8 @@
     <string name="app_name">Sprachführer</string>
     <string name="button_learn">Lehren</string>
     <string name="button_training">Trainieren</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="action_settings">Settings</string>
+
+
 
     <string name="help1">Startseite</string>
     <string name="help1text">Wählen Sie eine Sprache, die gehen, um zu studieren, zu teilen oder Hilfe rufen wieder</string>
@@ -53,7 +53,7 @@
     <string name="tab28">Phrasen</string>
     <string name="tab29">Vorwand</string>
     <string name="tab30">Geographie</string>
-
+    <string name="tab31">Geographie</string>
     <string name="enLanguage">Englisch</string>
     <string name="ruLanguage">Russisch</string>
     <string name="frLanguage">Französisch</string>

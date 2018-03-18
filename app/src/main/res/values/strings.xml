@@ -9,6 +9,8 @@
     <string name="link" translatable="false">https://play.google.com/store/apps/dev?id=8095982564959788470</string>
     <string name="tryIt" translatable="false">Try it! \n</string>
     <string name="shareVia" translatable="false" >Share via</string>
+    <string name="adView" translatable="false">ca-app-pub-2888343178529026/4969165311</string>
+    <string name="adView2" translatable="false">ca-app-pub-2888343178529026/3647935668</string>
 
     <string name="help1">Home screen</string>
     <string name="help1text">Select a language, go to study, share or call help again</string>
@@ -59,7 +61,7 @@
     <string name="tab28">Adjectives</string>
     <string name="tab29">Phrases</string>
     <string name="tab30">Preposition</string>
-    <string name="tab31">Geography</string>
+    <string name="tab31" >Geography</string>
     <string name="enLanguage">English</string>
     <string name="ruLanguage">Russian</string>
     <string name="frLanguage">French</string>
@@ -764,7 +766,7 @@
     <string name="verbs36">Dry Off</string>
     <string name="verbs37">Embrace</string>
     <string name="verbs38">Hesitate</string>
-    <string name="adjectives01">High</string>
+    <string name="adjectives01">Tall</string>
     <string name="adjectives02">Low</string>
     <string name="adjectives03">Big</string>
     <string name="adjectives04">Small</string>

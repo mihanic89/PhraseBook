@@ -3,8 +3,7 @@
     <string name="app_name">Frasario</string>
     <string name="button_learn">Impariamo</string>
     <string name="button_training">Alleniamo</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="action_settings">Settings</string>
+
 
     <string name="help1">Schermata Home</string>
     <string name="help1text">Selezionare una lingua, andare a studiare, condividere o chiedere aiuto di nuovo</string>
@@ -53,7 +52,7 @@
     <string name="tab28">Frasi</string>
     <string name="tab29">Preposizioni</string>
     <string name="tab30">Geografia</string>
-
+    <string name="tab31">Geografia</string>
     <string name="enLanguage">Inglese</string>
     <string name="ruLanguage">Russo</string>
     <string name="frLanguage">Francese</string>
