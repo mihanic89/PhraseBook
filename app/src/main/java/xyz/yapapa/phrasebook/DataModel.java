@@ -497,6 +497,16 @@ class DataModel {
         forms.add(new Phrase(R.string.forms08, "forms08.png", defaultLanguage, translateLanguage));
         forms.add(new Phrase(R.string.forms09, "forms09.png", defaultLanguage, translateLanguage));
         forms.add(new Phrase(R.string.forms10, "forms10.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms11, "forms11.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms12, "forms12.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms13, "forms13.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms14, "forms14.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms15, "forms15.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms16, "forms16.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms17, "forms17.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms18, "forms18.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms19, "forms19.png", defaultLanguage, translateLanguage));
+        forms.add(new Phrase(R.string.forms20, "forms20.png", defaultLanguage, translateLanguage));
         forms.add(new Phrase(R.string.forms21, "forms21.png", defaultLanguage, translateLanguage));
         forms.add(new Phrase(R.string.forms22, "forms22.png", defaultLanguage, translateLanguage));
         forms.add(new Phrase(R.string.forms23, "forms23.png", defaultLanguage, translateLanguage));

@@ -6,8 +6,6 @@ import android.support.text.emoji.EmojiCompat;
 import android.support.text.emoji.FontRequestEmojiCompatConfig;
 import android.support.text.emoji.bundled.BundledEmojiCompatConfig;
 import android.support.v4.provider.FontRequest;
-import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by Misha on 17.03.2018.
