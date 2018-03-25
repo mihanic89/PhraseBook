@@ -767,7 +767,7 @@ class DataModel {
         body.add(new Phrase(R.string.body21, "body21.png", defaultLanguage, translateLanguage));
         body.add(new Phrase(R.string.body22, "body22.png", defaultLanguage, translateLanguage));
         body.add(new Phrase(R.string.body23, "body23.png", defaultLanguage, translateLanguage));
-        body.add(new Phrase(R.string.body24, "body24.png", defaultLanguage, translateLanguage));
+        body.add(new Phrase(R.string.body24, "body24.gif", defaultLanguage, translateLanguage));
 
         emotions = new ArrayList<>();
         emotions.add(new Phrase(R.string.emotions01, "emotions01.gif", defaultLanguage, translateLanguage));

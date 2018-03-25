@@ -1,6 +1,7 @@
 package xyz.yapapa.phrasebook;
 
 import android.app.Application;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.text.emoji.EmojiCompat;
 import android.support.text.emoji.FontRequestEmojiCompatConfig;
@@ -46,7 +47,7 @@ public class PhrasebookApplication extends Application {
                         @Override
                         public void onFailed(@Nullable Throwable throwable) {
                             //Log.e(TAG, "EmojiCompat initialization failed", throwable);
-                          
+
                         }
                     });
         }
