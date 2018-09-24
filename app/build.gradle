@@ -4,19 +4,19 @@ apply plugin: 'com.google.firebase.firebase-perf'
 
 
 ext {
-    supportLibVersion = '27.1.0'
+    supportLibVersion = '28.0.0'
     firebaseLibVersion = '11.8.0'
 }
 
 
 android {
-    compileSdkVersion 27
-
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "xyz.yapapa.phrasebook"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 2
         versionName "1.01"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
