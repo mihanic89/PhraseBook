@@ -776,7 +776,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
             // Return a WordholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    return CharholderFragment.newInstance(data.getAlphabet(languageTranslate));
+                    return CharholderFragment.newInstance(data.getAlphabet(languageDefault));
                 case 1:
                     return CharholderFragment.newInstance(data.getNumbers());
                 case 2:

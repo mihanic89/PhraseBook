@@ -64,22 +64,26 @@ public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
         final String char1 = mDataSet.get(position1);
         //holder.getTextView().setText(R.string.app_name);
         holder.getTextChar().setText(char1);
+
+
         holder.getTextChar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ttsListener.speakTranslate(char1);
+                ttsListener.speakDefault(char1);
             }
 
         });
+
 
 
         holder.getTextChar().setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ttsListener.speakDefault(char1);
+                ttsListener.speakTranslate(char1);
                 return true;
             }
         });
+
 
         //holder.getTextView().setText(mDataSet.get(position).getField());
         //holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));

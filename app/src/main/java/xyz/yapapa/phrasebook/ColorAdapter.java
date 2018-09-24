@@ -88,8 +88,8 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
         holder.getImageColor().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ttsListener.speakTranslate(getStringByLocal(
-                        color.getField(),color.getTranslateLanguage()));
+                ttsListener.speakDefault(getStringByLocal(
+                        color.getField(),color.getDefaultLanguage()));
             }
 
         });

@@ -154,7 +154,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
              locales.add("ru");
          }
             else setDefaultLocale("ru");
-
+        /*
         if (!language.equals("zh")) {
             languages.add("\uD83C\uDDE8\uD83C\uDDF3 "+getResources().getString(R.string.zhLanguage));
             locales.add("zh");
@@ -210,6 +210,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         }
         else setDefaultLocale("uk");
 
+        */
         if (!language.equals("en") && (languages.size()!=10)) {
             languages.add(0,"\uD83C\uDDEC\uD83C\uDDE7 "+getResources().getString(R.string.enLanguage));
             locales.add(0,"en");

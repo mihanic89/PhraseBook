@@ -151,9 +151,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         holder.getImageView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ttsListener.speakTranslate(getStringByLocal(
+                ttsListener.speakDefault(getStringByLocal(
                         word.getField(),
-                        word.getTranslateLanguage()));
+                        word.getDefaultLanguage()));
             }
 
         });
