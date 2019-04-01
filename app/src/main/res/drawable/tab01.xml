@@ -2,7 +2,8 @@
  <selector xmlns:android="http://schemas.android.com/apk/res/android">
 <!-- When selected, use grey -->
 <item android:state_selected="true">
- <bitmap android:src="@drawable/ic_tab01"
+
+    <bitmap android:src="@drawable/ic_tab01"
          android:tint="@color/tab_selected"
 
          />

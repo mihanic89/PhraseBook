@@ -105,9 +105,10 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
         holder.getFlagView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ttsListener.speakTranslate(getStringByLocal(
-                        flag.getField(),
-                        flag.getTranslateLanguage()));
+                ttsListener.speakDefault(getStringById(
+                        flag.getField())
+
+                );
             }
 
         });
