@@ -136,7 +136,8 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3")
+                .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3") //nexus 5x
+                .addTestDevice("4174C23AC2A2DAFD78A7C0F0DFB39F3E") //Samsung A50
                 .build();
         mAdView.loadAd(adRequest);
 

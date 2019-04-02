@@ -179,6 +179,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         mAdView = findViewById(R.id.adView2);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3")
+                .addTestDevice("4174C23AC2A2DAFD78A7C0F0DFB39F3E") //Samsung A50
                 .build();
         mAdView.loadAd(adRequest);
     }
@@ -561,10 +562,21 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
             mRecyclerView.setLayoutManager(gaggeredGridLayoutManager);
 
            // GlideApp.get(rootView.getContext()).setMemoryCategory(MemoryCategory.LOW);
-            wordAdapter = new WordAdapter(
-                    (ArrayList<Phrase>)getArguments().getSerializable("key"),
-                    (int) getArguments().getInt("width")/(spanCount+2),
-                    rootView.getContext(), GlideApp.with(rootView.getContext()));
+
+            if (getActivity()!=null) {
+                wordAdapter = new WordAdapter(
+                        (ArrayList<Phrase>) getArguments().getSerializable("key"),
+                        (int) getArguments().getInt("width") / (spanCount + 2),
+                        getActivity(),
+                        GlideApp.with(this));
+            }
+            else{
+                wordAdapter = new WordAdapter(
+                        (ArrayList<Phrase>) getArguments().getSerializable("key"),
+                        (int) getArguments().getInt("width") / (spanCount + 2),
+                        rootView.getContext(),
+                        GlideApp.with(this));
+            }
 
             mRecyclerView.setAdapter(wordAdapter);
             mRecyclerView.setItemViewCacheSize(0);

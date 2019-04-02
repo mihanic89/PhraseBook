@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PhraseBook</string>
+    <string name="app_name">Cards</string>
 
     <string name="button_learn">Learn</string>
     <string name="button_training">Training</string>

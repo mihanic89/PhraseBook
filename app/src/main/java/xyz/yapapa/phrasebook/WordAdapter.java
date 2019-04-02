@@ -29,7 +29,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     private ArrayList<Phrase> mDataSet;
     private final int screenWidth;
     private Context context;
-    private GlideRequests glideRequests;
+    private GlideRequests glideRequests=null;
 
     private  TTSListener ttsListener;
     private final StorageReference mStorageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://phrasebook-c5065.appspot.com");
@@ -76,6 +76,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     }
 
+
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -93,9 +95,11 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     @Override
     public void onViewRecycled (ViewHolder holder){
 
-
-        glideRequests.clear(holder.getImageView());
         holder.getImageView().setImageBitmap(null);
+        GlideApp.with(holder.getImageView().getContext()).clear(holder.getImageView());
+
+        holder.getTextDefault().setText(null);
+        holder.getTextTranslate().setText(null);
         holder.getTextDefault().setOnClickListener(null);
         holder.getTextTranslate().setOnClickListener(null);
         super.onViewRecycled(holder);
