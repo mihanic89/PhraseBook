@@ -10,14 +10,14 @@ ext {
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "xyz.yapapa.phrasebook"
         minSdkVersion 20
-        targetSdkVersion 28
-        versionCode 3
+        targetSdkVersion 29
+        versionCode 4
         versionName "1.02"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

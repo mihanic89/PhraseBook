@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-PhraseBook.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-PhraseBook.iml" group="PhraseBook" />
       <module fileurl="file://$PROJECT_DIR$/PhraseBook.iml" filepath="$PROJECT_DIR$/PhraseBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PhraseBook-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PhraseBook-app.iml" group="PhraseBook/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

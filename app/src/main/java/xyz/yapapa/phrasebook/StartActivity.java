@@ -13,11 +13,13 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.bumptech.glide.Priority;
@@ -140,6 +142,17 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                 .addTestDevice("4174C23AC2A2DAFD78A7C0F0DFB39F3E") //Samsung A50
                 .build();
         mAdView.loadAd(adRequest);
+
+        TextView txt;
+        txt=findViewById(R.id.textViewPolicy);
+        txt.setMovementMethod(LinkMovementMethod.getInstance());
+        txt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("http://www.yapapa.xyz/private-policy-phrasebook/"));
+                startActivity(browserIntent);
+            }
+        });
 
 
     }
