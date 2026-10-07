@@ -33,22 +33,16 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "1057457844290-o9djvtmpj1lh0u1v8l6rcf8p5h8qt4er.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-2888343178529026~4340757150"
     }
   ],
   "configuration_version": "1"

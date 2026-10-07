@@ -15,11 +15,11 @@
     <string name="help3">Tabs</string>
     <string name="help3text">Select category</string>
     <string name="help4">Translation</string>
-    <string name="help4text">When you click on a picture or translated text, you will hear the translation</string>
+    <string name="help4text">Tap the translated text to hear the translation</string>
     <string name="help5">Original</string>
-    <string name="help5text">When you click on the original text, the original will be played</string>
-    <string name="help6">The original numbers</string>
-    <string name="help6text">With a long click on the number will be announced the original name</string>
+    <string name="help5text">Tap the picture or the original text to hear the original</string>
+    <string name="help6">Letters and numbers</string>
+    <string name="help6text">Tap a letter to hear it in the language you are learning. Tap a number to hear it in your language, or press and hold to hear it in the language you are learning</string>
     <string name="help7">Internet</string>
     <string name="help7text">Needs to download images, make sure you have a Wi-Fi connection or available mobile traffic</string>
     <string name="help8">Speech settings</string>
@@ -236,7 +236,7 @@
     <string name="food26">Sausage</string>
     <string name="food27">Sausage</string>
     <string name="food28">Sugar</string>
-    <string name="food29">Sol</string>
+    <string name="food29">Salt</string>
     <string name="food30">Coffee</string>
     <string name="food31">Tea</string>
     <string name="food32">Juice</string>
@@ -424,7 +424,7 @@
     <string name="animals61">Whale</string>
     <string name="animals62">Crab</string>
     <string name="animals63">Frog</string>
-    <string name="animals64">Cancer</string>
+    <string name="animals64">Crayfish</string>
     <string name="animals65">Fish</string>
     <string name="animals66">Turtle</string>
     <string name="animals67">Butterfly</string>
@@ -460,7 +460,7 @@
     <string name="house25">Wardrobe</string>
     <string name="house26">Sofa</string>
     <string name="house27">Dresser</string>
-    <string name="house28">Curbstone</string>
+    <string name="house28">Cabinet</string>
     <string name="house29">Chair</string>
     <string name="house30">Bed</string>
     <string name="house31">Table</string>
@@ -661,7 +661,7 @@
     <string name="school12">Eraser</string>
     <string name="school13">Ruler</string>
     <string name="school14">Pencil Case</string>
-    <string name="school15">Handle</string>
+    <string name="school15">Pen</string>
     <string name="school16">Notebook</string>
     <string name="school17">Sharpener</string>
     <string name="nature01">Forest</string>
@@ -803,18 +803,18 @@
     <string name="phrases08">Goodnight!</string>
     <string name="phrases09">See You!</string>
     <string name="phrases10">Have A Nice Day!</string>
-    <string name="phrases11">You"'"Re Welcome.</string>
+    <string name="phrases11">You\'re Welcome.</string>
     <string name="phrases12">Thanks.</string>
     <string name="phrases13">Excuse Me.</string>
     <string name="phrases14">Never Mind.</string>
     <string name="phrases15">Everything Is OK</string>
-    <string name="phrases16">Don"'"T Worry About It</string>
-    <string name="phrases17">I"'"M Catching On.</string>
+    <string name="phrases16">Don\'t Worry About It</string>
+    <string name="phrases17">I Understand.</string>
     <string name="phrases18">I Do Not Understand.</string>
-    <string name="phrases19">What"'"S Your Name?</string>
-    <string name="phrases20">My Name Is ...</string>
-    <string name="phrases21">What"'"S It?</string>
-    <string name="phrases22">Where Is ...?</string>
+    <string name="phrases19">What\'s Your Name?</string>
+    <string name="phrases20">My Name Is …</string>
+    <string name="phrases21">What\'s This?</string>
+    <string name="phrases22">Where Is …?</string>
     <string name="phrases23">I Love You.</string>
     <string name="pretext01">In</string>
     <string name="pretext02">On</string>
@@ -1110,4 +1110,10 @@
     <string name="geo272">Southern Ocean</string>
 
 
+    <string name="tts_missing_data">Voice data for this language is not installed. Install it in the text-to-speech settings.</string>
+    <string name="tts_not_supported">Text-to-speech on this device does not support this language.</string>
+    <string name="button_back">Back</string>
+    <string name="shareVia">Share via</string>
+    <string name="button_help">Help</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

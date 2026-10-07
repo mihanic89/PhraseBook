@@ -1,13 +1,14 @@
 package xyz.yapapa.phrasebook;
 
 
-import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.github.paolorotolo.appintro.AppIntro2;
-import com.github.paolorotolo.appintro.AppIntroFragment;
+import com.github.appintro.AppIntro2;
+import com.github.appintro.AppIntroFragment;
+import com.github.appintro.AppIntroPageTransformerType;
 
 /**
  * Created by Misha on 13.03.2018.
@@ -15,85 +16,43 @@ import com.github.paolorotolo.appintro.AppIntroFragment;
 
 public class IntroActivity extends AppIntro2 {
 
+    private static final int[] TITLES = {
+            R.string.help1, R.string.help2, R.string.help3, R.string.help4,
+            R.string.help5, R.string.help6, R.string.help7, R.string.help8};
+    private static final int[] TEXTS = {
+            R.string.help1text, R.string.help2text, R.string.help3text, R.string.help4text,
+            R.string.help5text, R.string.help6text, R.string.help7text, R.string.help8text};
+    private static final int[] IMAGES = {
+            R.mipmap.intro1, R.mipmap.intro2, R.mipmap.intro3, R.mipmap.intro4,
+            R.mipmap.intro5, R.mipmap.intro6, R.mipmap.intro7, R.mipmap.intro8};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        for (int i = 0; i < TITLES.length; i++) {
+            addSlide(AppIntroFragment.createInstance(
+                    getString(TITLES[i]),
+                    getString(TEXTS[i]),
+                    IMAGES[i],
+                    R.color.intro_background));
+        }
 
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help1),
-                getString(R.string.help1text),
-                R.mipmap.intro1, Color.parseColor("#41ba7a")));
+        setSkipButtonEnabled(true);
+        setButtonsEnabled(true);
 
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help2),
-                getString(R.string.help2text),
-                R.mipmap.intro2, Color.parseColor("#41ba7a")));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help3),
-                getString(R.string.help3text),
-                R.mipmap.intro3, Color.parseColor("#41ba7a")));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help4),
-                getString(R.string.help4text),
-                R.mipmap.intro4, Color.parseColor("#41ba7a")));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help5),
-                getString(R.string.help5text),
-                R.mipmap.intro5, Color.parseColor("#41ba7a")));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help6),
-                getString(R.string.help6text),
-                R.mipmap.intro6, Color.parseColor("#41ba7a")));
-
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help7),
-                getString(R.string.help7text),
-                R.mipmap.intro7, Color.parseColor("#41ba7a")));
-
-        addSlide(AppIntroFragment.newInstance(getString(R.string.help8),
-                getString(R.string.help8text),
-                R.mipmap.intro8, Color.parseColor("#41ba7a")));
-
-        showSkipButton(true);
-        setProgressButtonEnabled(true);
-
-        // Edit the color of the nav bar on Lollipop+ devices
-        setNavBarColor(R.color.colorPrimaryDark);//Color.parseColor("#3F51B5"));
-
-        // Turn vibration on and set intensity
-        // NOTE: you will need to ask VIBRATE permission in Manifest if you haven't already
-        //setVibrate(true);
-        //setVibrateIntensity(30);
-
-        // Animations -- use only one of the below. Using both could cause errors.
-        // Animations -- use only one of the below. Using both could cause errors.
-        //setFadeAnimation(); // OR
-        //setZoomAnimation(); // OR
-        //setFlowAnimation(); // OR
-        // setSlideOverAnimation(); // OR
-         setDepthAnimation(); // OR
-        //setCustomTransformer(yourCustomTransformer);
-
+        setTransformer(AppIntroPageTransformerType.Depth.INSTANCE);
     }
 
     @Override
-    public void onNextPressed() {
-        super.onNextPressed();
-        // Do something when users tap on Next button.
-    }
-
-    @Override
-    public void onDonePressed() {
-        // Do something when users tap on Done button.
-        super.onDonePressed();
+    protected void onDonePressed(@Nullable Fragment currentFragment) {
+        super.onDonePressed(currentFragment);
         finish();
     }
 
     @Override
-    public void onSlideChanged() {
-        // Do something when slide is changed
-        super.onSlideChanged();
-    }
-
-
-    @Override
-    public void onSkipPressed(){
-        super.onSkipPressed();
+    protected void onSkipPressed(@Nullable Fragment currentFragment) {
+        super.onSkipPressed(currentFragment);
         finish();
     }
 }

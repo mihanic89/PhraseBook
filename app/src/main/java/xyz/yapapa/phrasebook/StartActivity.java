@@ -2,430 +2,225 @@ package xyz.yapapa.phrasebook;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Priority;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
+/**
+ * Стартовый экран: выбор изучаемого языка, переход к карточкам, справка и политика конфиденциальности.
+ * Родной язык берётся из языка телефона, если он поддерживается, иначе английский.
+ */
 public class StartActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner languageSpinner;
-    private List<String> languages;
-    private List<String> locales;
-    private int screenWidth, screenHeight;
-    private AdView mAdView;
+    private static final String PRIVACY_POLICY_URL = "https://apps.mayak.net.ru/private-policy-phrasebook";
 
+    /** Файл настроек, который раньше создавал PreferenceManager.getDefaultSharedPreferences. */
+    private static final String APP_PREFS_SUFFIX = "_preferences";
+    private static final String KEY_FIRST_START = "firstStart";
+
+    private static final String LANGUAGE_PREFS = "language";
+    private static final String KEY_TRANSLATE = "languageTranslate";
+    private static final String KEY_DEFAULT = "languageDefault";
+
+    private Spinner languageSpinner;
+    /** Коды языков в том же порядке, что и строки в спиннере. */
+    private List<String> locales;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        MobileAds.initialize(this, "ca-app-pub-2888343178529026~4340757150");
-
-
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //  Initialize SharedPreferences
-                SharedPreferences getPrefs = PreferenceManager
-                        .getDefaultSharedPreferences(getBaseContext());
-
-                //  Create a new boolean and preference and set it to true
-                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-                //  If the activity has never started before...
-                if (isFirstStart) {
-
-                    //  Launch app intro
-                    Intent i = new Intent(StartActivity.this, IntroActivity.class);
-                    startActivity(i);
-
-                    //  Make a new preferences editor
-                    SharedPreferences.Editor e = getPrefs.edit();
-
-                    //  Edit preference to make it false because we don't want this to run again
-                    e.putBoolean("firstStart", false);
-
-                    //  Apply changes
-                    e.apply();
-                }
-            }
-        });
-
-        // Start the thread
-        t.start();
-
+        setupAds();
+        showIntroOnFirstStart();
 
         setContentView(R.layout.activity_start);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Point size = new Point();
-        getWindowManager().getDefaultDisplay().getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.start_root), (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            return insets;
+        });
 
-        /*
-        Toast toast = Toast.makeText(getApplicationContext(),
-                screenWidth + " " + screenHeight, Toast.LENGTH_SHORT);
-        toast.show();
-        */
+        loadBackground();
+        setupLanguageSpinner();
 
+        adView = findViewById(R.id.adView);
+        adView.loadAd(new AdRequest.Builder().build());
+
+        findViewById(R.id.textViewPolicy).setOnClickListener(v ->
+                startSafely(new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_POLICY_URL))));
+    }
+
+    /** Открывает внешний экран; если на устройстве нет подходящего приложения, ничего не делает. */
+    private void startSafely(Intent intent) {
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException ignored) {
+            // нет браузера или экрана настроек озвучки (бывает у некоторых производителей)
+        }
+    }
+
+    private void setupAds() {
+        if (BuildConfig.DEBUG) {
+            // тестовые устройства разработчика: реклама в отладочных сборках без риска для аккаунта
+            MobileAds.setRequestConfiguration(new RequestConfiguration.Builder()
+                    .setTestDeviceIds(Arrays.asList(
+                            "A4203BC89A24BEEC45D1111F16D2F0A3", // Nexus 5X
+                            "4174C23AC2A2DAFD78A7C0F0DFB39F3E")) // Samsung A50
+                    .build());
+        }
+        MobileAds.initialize(this, initializationStatus -> { });
+    }
+
+    /** При самом первом запуске показываем справку. */
+    private void showIntroOnFirstStart() {
+        SharedPreferences appPrefs = getSharedPreferences(getPackageName() + APP_PREFS_SUFFIX, MODE_PRIVATE);
+        if (appPrefs.getBoolean(KEY_FIRST_START, true)) {
+            appPrefs.edit().putBoolean(KEY_FIRST_START, false).apply();
+            startActivity(new Intent(this, IntroActivity.class));
+        }
+    }
+
+    private void loadBackground() {
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
         GlideApp.with(this)
-                // .asDrawable()
-                // .load(mStorageRef.child(mDataSet.get(position).getImage()))
                 .load(R.mipmap.background)
-                // .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .priority(Priority.LOW)
-                //.load(internetUrl)
-                //.skipMemoryCache(true)
-                .override((int) screenWidth / 2, (int) screenHeight / 2)
+                .override(width / 2, height / 2)
                 .fitCenter()
-                // .thumbnail()
-                //.error(R.mipmap.ic_launcher)
-                .placeholder(new ColorDrawable(getResources().getColor(R.color.background)))
-                //.placeholder(R.mipmap.placeholder)
+                .placeholder(R.color.background)
                 .transition(withCrossFade(1000))
                 .into((ImageView) findViewById(R.id.imageViewBackground));
+    }
 
-        SharedPreferences sharedPref = this.getSharedPreferences("language", Context.MODE_PRIVATE);
-
-
+    private void setupLanguageSpinner() {
         languageSpinner = findViewById(R.id.languageSelect);
         languageSpinner.setOnItemSelectedListener(this);
 
+        List<String> names = makeLanguageList(Locale.getDefault().getLanguage());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_custom_item, names);
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_custom_item);
+        languageSpinner.setAdapter(adapter);
 
-        //создаем список доступных к переводу языков кроме языка приложения
-        languages = makeLanguageList(Locale.getDefault().getLanguage());
-        //адаптер для спиннера
-        ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
-                this,
-                R.layout.simple_spinner_custom_item,
-                languages);
-
-        languageAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_custom_item);
-        languageSpinner.setAdapter(languageAdapter);
-
-        String languageTranslate = sharedPref.getString("languageTranslate", "en");
-
-        setSpinner(languageTranslate);
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("A4203BC89A24BEEC45D1111F16D2F0A3") //nexus 5x
-                .addTestDevice("4174C23AC2A2DAFD78A7C0F0DFB39F3E") //Samsung A50
-                .build();
-        mAdView.loadAd(adRequest);
-
-        TextView txt;
-        txt=findViewById(R.id.textViewPolicy);
-        txt.setMovementMethod(LinkMovementMethod.getInstance());
-        txt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-                browserIntent.setData(Uri.parse("http://www.yapapa.xyz/private-policy-phrasebook/"));
-                startActivity(browserIntent);
-            }
-        });
-
-
+        String saved = getSharedPreferences(LANGUAGE_PREFS, Context.MODE_PRIVATE).getString(KEY_TRANSLATE, "en");
+        int index = locales.indexOf(saved);
+        languageSpinner.setSelection(Math.max(index, 0));
     }
 
-    /*создание списка языков на основе языка телефона, язык телефона исключается
-    язык по умолчанию английский
-    */
-    private List<String> makeLanguageList(String language) {
-        List<String> languages = new ArrayList<>();
+    /**
+     * Языки для спиннера, без родного. Заодно запоминает родной язык: язык телефона,
+     * если он есть в списке, иначе английский.
+     */
+    private List<String> makeLanguageList(String phoneLanguage) {
+        // код языка, флаг, название; порядок — как в списке выбора
+        final String[][] supported = {
+                {"en", "🇬🇧", getString(R.string.enLanguage)},
+                {"ru", "🇷🇺", getString(R.string.ruLanguage)},
+                {"zh", "🇨🇳", getString(R.string.zhLanguage)},
+                {"fr", "🇫🇷", getString(R.string.frLanguage)},
+                {"de", "🇩🇪", getString(R.string.deLanguage)},
+                {"it", "🇮🇹", getString(R.string.itLanguage)},
+                {"es", "🇪🇸", getString(R.string.spLanguage)},
+                {"pt", "🇵🇹", getString(R.string.ptLanguage)},
+                {"fi", "🇫🇮", getString(R.string.fiLanguage)},
+                {"be", "🇧🇾", getString(R.string.beLanguage)},
+                {"uk", "🇺🇦", getString(R.string.ukLanguage)},
+        };
+
+        String originalLanguage = "en";
+        for (String[] item : supported) {
+            if (item[0].equals(phoneLanguage)) originalLanguage = phoneLanguage;
+        }
+        getSharedPreferences(LANGUAGE_PREFS, Context.MODE_PRIVATE).edit()
+                .putString(KEY_DEFAULT, originalLanguage).apply();
+
+        List<String> names = new ArrayList<>();
         locales = new ArrayList<>();
-        if (!language.equals("ru")) {
-            languages.add("\uD83C\uDDF7\uD83C\uDDFA " + getResources().getString(R.string.ruLanguage));
-            locales.add("ru");
-        } else setDefaultLocale("ru");
-        /*
-        if (!language.equals("zh")) {
-            languages.add("\uD83C\uDDE8\uD83C\uDDF3 "+getResources().getString(R.string.zhLanguage));
-            locales.add("zh");
+        for (String[] item : supported) {
+            if (!item[0].equals(originalLanguage)) {
+                names.add(item[1] + " " + item[2]);
+                locales.add(item[0]);
+            }
         }
-             else setDefaultLocale("zh");
-
-         if (!language.equals("fr")) {
-             languages.add("\uD83C\uDDEB\uD83C\uDDF7 "+getResources().getString(R.string.frLanguage));
-             locales.add("fr");
-         }
-            else setDefaultLocale("fr");
-
-         if (!language.equals("de")) {
-             languages.add("\uD83C\uDDE9\uD83C\uDDEA "+getResources().getString(R.string.deLanguage));
-             locales.add("de");
-
-         }
-             else setDefaultLocale("de");
-
-        if (!language.equals("it")) {
-            languages.add("\uD83C\uDDEE\uD83C\uDDF9 "+getResources().getString(R.string.itLanguage));
-            locales.add("it");
-        }
-            else setDefaultLocale("it");
-
-        if (!language.equals("es")) {
-            languages.add("\uD83C\uDDEA\uD83C\uDDF8 "+getResources().getString(R.string.spLanguage));
-            locales.add("es");
-        }
-            else setDefaultLocale("es");
-
-        if (!language.equals("pt")) {
-            languages.add("\uD83C\uDDF5\uD83C\uDDF9 "+getResources().getString(R.string.ptLanguage));
-            locales.add("pt");
-        }
-        else setDefaultLocale("pt");
-
-        if (!language.equals("fi")) {
-            languages.add("\uD83C\uDDEB\uD83C\uDDEE "+getResources().getString(R.string.fiLanguage));
-            locales.add("fi");
-        }
-        else setDefaultLocale("pt");
-
-        if (!language.equals("be")) {
-            languages.add("\uD83C\uDDE7\uD83C\uDDFE "+getResources().getString(R.string.beLanguage));
-            locales.add("be");
-        }
-        else setDefaultLocale("be");
-
-        if (!language.equals("uk")) {
-            languages.add("\uD83C\uDDFA\uD83C\uDDE6 "+getResources().getString(R.string.ukLanguage));
-            locales.add("uk");
-        }
-        else setDefaultLocale("uk");
-
-        */
-        if (!language.equals("en") && (languages.size() != 10)) {
-            languages.add(0, "\uD83C\uDDEC\uD83C\uDDE7 " + getResources().getString(R.string.enLanguage));
-            locales.add(0, "en");
-        } else setDefaultLocale("en");
-
-         /*
-        Toast toast = Toast.makeText(getApplicationContext(),
-                language, Toast.LENGTH_SHORT);
-        toast.show();
-        */
-        return languages;
-
+        return names;
     }
-
-
-    /*
-    проверка какой язык выбран и взвращение по этому языку индекса в массиве языков
-     */
-    private void setSpinner(String languageTranslate) {
-
-        int i = -1;
-        if (languageTranslate.equals("en")) i = locales.indexOf(languageTranslate);
-
-        if (languageTranslate.equals("ru")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("fr")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("de")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("zh")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("it")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("es")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("pt")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("fi")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("be")) i = locales.indexOf(languageTranslate);
-        if (languageTranslate.equals("uk")) i = locales.indexOf(languageTranslate);
-        if (i > 0) languageSpinner.setSelection(i);
-        else languageSpinner.setSelection(0);
-
-
-    }
-
-    public void help(View v) {
-        Intent i = new Intent(StartActivity.this, IntroActivity.class);
-        startActivity(i);
-    }
-
-    public void settings(View v) {
-        Intent intent = new Intent();
-        intent.setAction("com.android.settings.TTS_SETTINGS");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
-    }
-
-    public void share(View v) {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = getString(R.string.tryIt) + getString(R.string.link);
-        // sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, getString(R.string.shareVia)));
-    }
-
-    public void startLearn(View v) {
-        Intent intent = new Intent(this, TabbedActivity.class);
-        newActivityStart(intent);
-    }
-
-    public void startTraining(View v) {
-
-
-    }
-
-    private void newActivityStart(Intent intent) {
-
-        startActivity(intent);
-    }
-
-
-    /*
-    По выбранному языку записывает в шаред преференс язык для перевода
-     */
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Locale current = getResources().getConfiguration().locale;
-
-        String locale = "en";
-        /*
-        if (languages.get(position).equals(getResources().getString(R.string.enLanguage))) locale="en";
-        if (languages.get(position).equals(getResources().getString(R.string.ruLanguage))) locale="ru";
-        if (languages.get(position).equals(getResources().getString(R.string.frLanguage))) locale="fr";
-        if (languages.get(position).equals(getResources().getString(R.string.deLanguage))) locale="de";
-        if (languages.get(position).equals(getResources().getString(R.string.itLanguage))) locale="it";
-        if (languages.get(position).equals(getResources().getString(R.string.spLanguage))) locale="es";
-        if (languages.get(position).equals(getResources().getString(R.string.ptLanguage))) locale="pt";
-        if (languages.get(position).equals(getResources().getString(R.string.beLanguage))) locale="be";
-        if (languages.get(position).equals(getResources().getString(R.string.ukLanguage))) locale="uk";
-        if (languages.get(position).equals(getResources().getString(R.string.zhLanguage))) locale="zh";
-        */
-        setTranslateLocale(locales.get(position));
-
-
-    }
-
-    private void setDefaultLocale(String language) {
-
-        SharedPreferences sharedPref = this.getSharedPreferences("language", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("languageDefault", language);
-        editor.apply();
-    }
-
-
-    private void setTranslateLocale(String language) {
-        SharedPreferences sharedPref = this.getSharedPreferences("language", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("languageTranslate", language);
-        editor.apply();
-        /*
-        Toast toast = Toast.makeText(getApplicationContext(),
-                language, Toast.LENGTH_SHORT);
-        toast.show();
-        */
+        getSharedPreferences(LANGUAGE_PREFS, Context.MODE_PRIVATE).edit()
+                .putString(KEY_TRANSLATE, locales.get(position)).apply();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
+    /** onClick из activity_start.xml */
+    public void help(View v) {
+        startActivity(new Intent(this, IntroActivity.class));
+    }
 
-    /**
-     * Called when leaving the activity
-     */
+    /** onClick из activity_start.xml */
+    public void settings(View v) {
+        Intent intent = new Intent("com.android.settings.TTS_SETTINGS");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startSafely(intent);
+    }
+
+    /** onClick из activity_start.xml */
+    public void share(View v) {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.tryIt) + getString(R.string.link));
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.shareVia)));
+    }
+
+    /** onClick из activity_start.xml */
+    public void startLearn(View v) {
+        startActivity(new Intent(this, TabbedActivity.class));
+    }
+
     @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
+    protected void onPause() {
+        adView.pause();
         super.onPause();
     }
 
-    /**
-     * Called when returning to the activity
-     */
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
+        adView.resume();
     }
 
-    /**
-     * Called before the activity is destroyed
-     */
     @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
+    protected void onDestroy() {
+        adView.destroy();
         super.onDestroy();
     }
-
-
-    /*
-    @Override
-    public void onBackPressed() {
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(StartActivity.this);
-        alert.setTitle("Rate Us:");
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                Uri uri = Uri.parse("market://details?id=" + getPackageName());
-                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                try {
-                    startActivity(goToMarket);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id="
-                                    + getPackageName())));
-                }
-
-                dialog.dismiss();
-                finish();
-            }
-        });
-
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        alert.create();
-        alert.show();
-
-    }
-
-    */
 }

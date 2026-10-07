@@ -16,4 +16,5 @@
 
     <color name="tab_default">#A5D6A7</color>
     <color name="tab_selected">@color/colorText</color>
+    <color name="intro_background">#41ba7a</color>
 </resources>

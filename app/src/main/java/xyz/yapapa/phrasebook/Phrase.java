@@ -1,66 +1,39 @@
 package xyz.yapapa.phrasebook;
 
-import java.io.Serializable;
-
 /**
- * Created by Misha on 09.01.2018.
+ * Одна карточка: ресурс строки и либо имя картинки (файл на сервере или эмодзи-флаг),
+ * либо ресурс цвета.
  */
+final class Phrase {
 
-class Phrase implements Serializable {
-    private Integer field ;
-    private String image;
+    private final int field;
+    private final String image;
+    private final int color;
 
-    public Integer getColor() {
-        return color;
-    }
-
-    private Integer color;
-
-    public String getDefaultLanguage() {
-        return defaultLanguage;
-    }
-
-    public String getTranslateLanguage() {
-        return translateLanguage;
-    }
-
-    private String defaultLanguage;
-    private String translateLanguage;
-
-    public Phrase(Integer field, String image) {
+    private Phrase(int field, String image, int color) {
         this.field = field;
         this.image = image;
-    }
-    public Phrase(Integer field, String image, String defaultLanguage, String translateLanguage) {
-        this.field = field;
-        this.image = image;
-        this.defaultLanguage = defaultLanguage;
-        this.translateLanguage = translateLanguage;
-    }
-
-    public Phrase(Integer field, Integer color, String defaultLanguage, String translateLanguage) {
-        this.field = field;
         this.color = color;
-        this.defaultLanguage = defaultLanguage;
-        this.translateLanguage = translateLanguage;
-    }
-    public void setField(Integer field) {
-        this.field = field;
     }
 
-    public String getImage() {
-
-        return image;
+    static Phrase image(int field, String image) {
+        return new Phrase(field, image, 0);
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    static Phrase color(int field, int color) {
+        return new Phrase(field, null, color);
     }
 
-    public Integer getField() {
-
+    /** Ресурс строки с текстом карточки. */
+    int getField() {
         return field;
     }
 
+    String getImage() {
+        return image;
+    }
 
+    int getColor() {
+        return color;
+    }
 }

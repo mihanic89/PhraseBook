@@ -1,172 +1,69 @@
 package xyz.yapapa.phrasebook;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 /**
- * Created by Misha on 09.01.2018.
+ * Буквы и числа. Буквы — алфавит изучаемого языка, нажатие читает букву на нём.
+ * Числа: нажатие читает число на родном языке, долгое нажатие — на изучаемом.
  */
-
 public class CharAdapter extends RecyclerView.Adapter<CharAdapter.ViewHolder> {
 
-    private  ArrayList<String> mDataSet;
+    private final List<String> data;
+    private final TTSListener tts;
+    private final boolean translationOnly;
 
-    private TTSListener ttsListener;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView textChar;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textChar;
-
-
-
-
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-
             textChar = itemView.findViewById(R.id.textChar);
-
-
-
-
         }
-
-        public TextView getTextChar() {
-            return textChar;
-        }
-
-
-
     }
 
-    public CharAdapter(ArrayList<String> dataSet) {
-        mDataSet = dataSet;
+    /**
+     * @param translationOnly символы изучаемого языка (алфавит): читаются только его голосом
+     */
+    CharAdapter(List<String> data, TTSListener tts, boolean translationOnly) {
+        this.data = data;
+        this.tts = tts;
+        this.translationOnly = translationOnly;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.char_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.char_item, parent, false);
-        Context context = parent.getContext();
-        if (ttsListener==null){
-            ttsListener = (TTSListener) context;}
-        return new ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder,  int position1) {
-       // final int position = position1;
-
-        final String char1 = mDataSet.get(position1);
-        //holder.getTextView().setText(R.string.app_name);
-        holder.getTextChar().setText(char1);
-
-
-        holder.getTextChar().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ttsListener.speakDefault(char1);
-            }
-
-        });
-
-
-
-        holder.getTextChar().setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                ttsListener.speakTranslate(char1);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final String text = data.get(position);
+        holder.textChar.setText(text);
+        if (translationOnly) {
+            holder.textChar.setOnClickListener(v -> tts.speakTranslate(text));
+            holder.textChar.setOnLongClickListener(null);
+            holder.textChar.setLongClickable(false);
+        } else {
+            holder.textChar.setOnClickListener(v -> tts.speakDefault(text));
+            holder.textChar.setOnLongClickListener(v -> {
+                tts.speakTranslate(text);
                 return true;
-            }
-        });
-
-
-        //holder.getTextView().setText(mDataSet.get(position).getField());
-        //holder.getTextTranslate().setText(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-       // holder.getImageView().setImageResource(mDataSet.get(position).getImage());
-        // Define click listener for the ViewHolder's View.
-
-       /* holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ttsListener.speak(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-            }
-
-        });
-
-        holder.getImageView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ttsListener.speak(getStringByLocal(mDataSet.get(position).getField(),mDataSet.get(position).getTranslateLanguage()));
-            }
-
-        });
-
-        holder.getTextDefault().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tts= new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-                    @Override
-                    public void onInit(int status) {
-                        if (status == TextToSpeech.SUCCESS){
-                            int result = tts.setLanguage(new Locale(mDataSet.get(position).getDefaultLanguage(),""));
-                            String toSpeak = context.getResources().getString(mDataSet.get(position).getField());
-                            String utteranceId = this.hashCode() + "";
-
-                            Bundle params = new Bundle();
-                            params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "");
-                            tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, params, utteranceId);
-                        }else{
-                            Toast.makeText(context, "Not Supported in your Device", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-
-
-                });
-            }
-        });
-
-
-
-        holder.getTextTranslate().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tts= new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-                    @Override
-                    public void onInit(int status) {
-                        if (status == TextToSpeech.SUCCESS){
-                            int result = tts.setLanguage(new Locale(mDataSet.get(position).getTranslateLanguage(),""));
-                            String toSpeak = getStringByLocal(mDataSet.get(position).getField(), mDataSet.get(position).getTranslateLanguage());
-                            String utteranceId = this.hashCode() + "";
-
-                            Bundle params = new Bundle();
-                            params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "");
-                            tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, params, utteranceId);
-                        }else{
-                            Toast.makeText(context, "Not Supported in your Device", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
-        */
+            });
+        }
     }
-
-
-
-
 
     @Override
     public int getItemCount() {
-        return mDataSet.size();
+        return data.size();
     }
-
-
-
-
 }

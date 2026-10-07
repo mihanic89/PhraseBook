@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/start_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:contentDescription="Image"
+        android:importantForAccessibility="no"
         android:gravity="center_horizontal"
         android:scaleType="centerCrop" />
 
@@ -31,7 +32,7 @@
         android:layout_marginTop="@dimen/button_margin"
         android:background="@drawable/oval_shape"
         android:elevation="5dp"
-        android:fontFamily="@font/bubblegum_sans"
+        android:fontFamily="@font/marmelad"
         android:onClick="startLearn"
         android:padding="@dimen/button_padding"
         android:text="@string/button_learn"
@@ -55,8 +56,8 @@
         android:layout_marginTop="@dimen/button_margin"
         android:background="@drawable/oval_shape"
         android:elevation="5dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:onClick="startTraining"
+        android:fontFamily="@font/marmelad"
+        
         android:padding="@dimen/button_padding"
         android:text="@string/button_training"
         android:textAlignment="center"
@@ -104,9 +105,10 @@
         android:adjustViewBounds="true"
         android:background="@drawable/oval_shape"
         android:elevation="5dp"
+        android:contentDescription="@string/shareVia"
         android:onClick="share"
         android:padding="@dimen/button_padding"
-        android:tint="@color/colorText"
+        app:tint="@color/colorText"
         app:srcCompat="@android:drawable/ic_menu_share" />
 
     <ImageButton
@@ -119,9 +121,10 @@
         android:adjustViewBounds="true"
         android:background="@drawable/oval_shape"
         android:elevation="5dp"
+        android:contentDescription="@string/button_help"
         android:onClick="help"
         android:padding="@dimen/button_padding"
-        android:tint="@color/colorText"
+        app:tint="@color/colorText"
         android:visibility="visible"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
@@ -134,9 +137,10 @@
         android:adjustViewBounds="true"
         android:background="@drawable/oval_shape"
         android:elevation="5dp"
+        android:contentDescription="@string/help8"
         android:onClick="settings"
         android:padding="@dimen/button_padding"
-        android:tint="@color/colorText"
+        app:tint="@color/colorText"
         android:visibility="visible"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
@@ -149,9 +153,9 @@
         android:layout_below="@+id/imageButton3"
         android:textAlignment="center"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="@dimen/button_margin"
         android:layout_marginBottom="10dp"
-        android:text="Privacy Policy" />
+        android:text="@string/privacy_policy" />
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,7 +33,7 @@
 
 
 
-            android:fontFamily="@font/bubblegum_sans"
+            android:fontFamily="@font/marmelad"
             android:gravity="center_horizontal"
 
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:contentDescription="Image"
+            tools:ignore="ContentDescription"
             android:gravity="center_horizontal"
              />
 
@@ -61,7 +61,7 @@
             android:layout_height="@dimen/card_text_height"
 
 
-            android:fontFamily="@font/bubblegum_sans"
+            android:fontFamily="@font/marmelad"
             android:gravity="center_horizontal"
 
 
@@ -76,4 +76,4 @@
 
 
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
