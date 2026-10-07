@@ -57,7 +57,11 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         ttsTranslation = new TtsSpeaker(this, languageTranslate, this::onTtsUnavailable);
 
         adView = findViewById(R.id.adView2);
-        adView.loadAd(new AdRequest.Builder().build());
+        // согласие собирается на стартовом экране; без него реклама не запрашивается
+        if (AdConsent.canRequestAds(this)) {
+            AdConsent.startMobileAds(this);
+            adView.loadAd(new AdRequest.Builder().build());
+        }
     }
 
     private void loadBackground() {

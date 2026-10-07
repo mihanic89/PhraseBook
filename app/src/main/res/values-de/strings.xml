@@ -1109,6 +1109,7 @@
     <string name="tts_missing_data">Für diese Sprache sind keine Sprachdaten installiert. Installieren Sie sie in den Einstellungen der Sprachausgabe.</string>
     <string name="tts_not_supported">Die Sprachausgabe dieses Geräts unterstützt diese Sprache nicht.</string>
     <string name="button_back">Zurück</string>
+    <string name="ad_privacy_settings">Datenschutzeinstellungen für Werbung</string>
     <string name="shareVia">Teilen über</string>
     <string name="button_help">Hilfe</string>
     <string name="privacy_policy">Datenschutzerklärung</string>

@@ -1110,6 +1110,7 @@
     <string name="tts_missing_data">Les données vocales de cette langue ne sont pas installées. Installez-les dans les paramètres de synthèse vocale.</string>
     <string name="tts_not_supported">La synthèse vocale de cet appareil ne prend pas en charge cette langue.</string>
     <string name="button_back">Retour</string>
+    <string name="ad_privacy_settings">Paramètres de confidentialité des annonces</string>
     <string name="shareVia">Partager via</string>
     <string name="button_help">Aide</string>
     <string name="privacy_policy">Politique de confidentialité</string>

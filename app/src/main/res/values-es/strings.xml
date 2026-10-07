@@ -1118,6 +1118,7 @@
     <string name="tts_missing_data">Los datos de voz de este idioma no están instalados. Instálelos en los ajustes de síntesis de voz.</string>
     <string name="tts_not_supported">La síntesis de voz de este dispositivo no admite este idioma.</string>
     <string name="button_back">Atrás</string>
+    <string name="ad_privacy_settings">Configuración de privacidad de anuncios</string>
     <string name="shareVia">Compartir con</string>
     <string name="button_help">Ayuda</string>
     <string name="privacy_policy">Política de privacidad</string>

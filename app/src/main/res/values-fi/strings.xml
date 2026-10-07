@@ -1109,6 +1109,7 @@
     <string name="tts_missing_data">Tämän kielen puhedataa ei ole asennettu. Asenna se puhesyntetisaattorin asetuksista.</string>
     <string name="tts_not_supported">Tämän laitteen puhesynteesi ei tue tätä kieltä.</string>
     <string name="button_back">Takaisin</string>
+    <string name="ad_privacy_settings">Mainosten tietosuoja-asetukset</string>
     <string name="shareVia">Jaa sovelluksella</string>
     <string name="button_help">Ohje</string>
     <string name="privacy_policy">Tietosuojakäytäntö</string>

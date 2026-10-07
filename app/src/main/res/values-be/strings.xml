@@ -1108,6 +1108,7 @@
     <string name="tts_missing_data">Галасавыя даныя для гэтай мовы не ўсталяваны. Усталюйце іх у наладах сінтэзу маўлення.</string>
     <string name="tts_not_supported">Сінтэз маўлення на гэтай прыладзе не падтрымлівае гэту мову.</string>
     <string name="button_back">Назад</string>
+    <string name="ad_privacy_settings">Налады канфідэнцыяльнасці рэкламы</string>
     <string name="shareVia">Падзяліцца праз</string>
     <string name="button_help">Даведка</string>
     <string name="privacy_policy">Палітыка канфідэнцыяльнасці</string>

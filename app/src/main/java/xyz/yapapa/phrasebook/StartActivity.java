@@ -50,14 +50,14 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
     /** Коды языков в том же порядке, что и строки в спиннере. */
     private List<String> locales;
     private AdView adView;
+    private View adPrivacyLink;
+    private boolean adLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupAds();
-        showIntroOnFirstStart();
-
+        setupAdsDebug();
         setContentView(R.layout.activity_start);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.start_root), (v, insets) -> {
@@ -70,10 +70,30 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         setupLanguageSpinner();
 
         adView = findViewById(R.id.adView);
-        adView.loadAd(new AdRequest.Builder().build());
+        adPrivacyLink = findViewById(R.id.textViewAdPrivacy);
+        adPrivacyLink.setOnClickListener(v -> AdConsent.showPrivacyOptions(this, this::onConsentGathered));
 
         findViewById(R.id.textViewPolicy).setOnClickListener(v ->
                 startSafely(new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_POLICY_URL))));
+
+        // согласие, полученное в прошлый раз, действует сразу — не ждём ответа сервера
+        loadAdIfAllowed();
+        AdConsent.gather(this, this::onConsentGathered);
+    }
+
+    /** Форма согласия закрыта или не нужна: реклама, пункт настроек и справка при первом запуске. */
+    private void onConsentGathered() {
+        if (isFinishing() || isDestroyed()) return;
+        loadAdIfAllowed();
+        adPrivacyLink.setVisibility(AdConsent.isPrivacyOptionsRequired(this) ? View.VISIBLE : View.GONE);
+        showIntroOnFirstStart();
+    }
+
+    private void loadAdIfAllowed() {
+        if (adLoaded || !AdConsent.canRequestAds(this)) return;
+        adLoaded = true;
+        AdConsent.startMobileAds(this);
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     /** Открывает внешний экран; если на устройстве нет подходящего приложения, ничего не делает. */
@@ -85,7 +105,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
-    private void setupAds() {
+    private void setupAdsDebug() {
         if (BuildConfig.DEBUG) {
             // тестовые устройства разработчика: реклама в отладочных сборках без риска для аккаунта
             MobileAds.setRequestConfiguration(new RequestConfiguration.Builder()
@@ -94,7 +114,6 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
                             "4174C23AC2A2DAFD78A7C0F0DFB39F3E")) // Samsung A50
                     .build());
         }
-        MobileAds.initialize(this, initializationStatus -> { });
     }
 
     /** При самом первом запуске показываем справку. */

@@ -1107,6 +1107,7 @@
     <string name="tts_missing_data">未安装此语言的语音数据。请在文字转语音设置中安装。</string>
     <string name="tts_not_supported">此设备的文字转语音不支持该语言。</string>
     <string name="button_back">返回</string>
+    <string name="ad_privacy_settings">广告隐私设置</string>
     <string name="shareVia">分享方式</string>
     <string name="button_help">帮助</string>
     <string name="privacy_policy">隐私政策</string>

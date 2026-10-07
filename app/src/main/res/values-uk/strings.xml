@@ -1108,6 +1108,7 @@
     <string name="tts_missing_data">Голосові дані для цієї мови не встановлено. Встановіть їх у налаштуваннях синтезу мовлення.</string>
     <string name="tts_not_supported">Синтез мовлення на цьому пристрої не підтримує цю мову.</string>
     <string name="button_back">Назад</string>
+    <string name="ad_privacy_settings">Налаштування конфіденційності реклами</string>
     <string name="shareVia">Поділитися через</string>
     <string name="button_help">Довідка</string>
     <string name="privacy_policy">Політика конфіденційності</string>

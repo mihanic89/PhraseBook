@@ -1108,6 +1108,7 @@
     <string name="tts_missing_data">Os dados de voz deste idioma não estão instalados. Instale-os nas configurações de síntese de voz.</string>
     <string name="tts_not_supported">A síntese de voz deste dispositivo não suporta este idioma.</string>
     <string name="button_back">Voltar</string>
+    <string name="ad_privacy_settings">Configurações de privacidade de anúncios</string>
     <string name="shareVia">Compartilhar via</string>
     <string name="button_help">Ajuda</string>
     <string name="privacy_policy">Política de privacidade</string>

@@ -1116,6 +1116,7 @@
     <string name="tts_missing_data">Voice data for this language is not installed. Install it in the text-to-speech settings.</string>
     <string name="tts_not_supported">Text-to-speech on this device does not support this language.</string>
     <string name="button_back">Back</string>
+    <string name="ad_privacy_settings">Ad privacy settings</string>
     <string name="shareVia">Share via</string>
     <string name="button_help">Help</string>
     <string name="privacy_policy">Privacy Policy</string>
