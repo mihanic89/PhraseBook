@@ -11,9 +11,9 @@
     <string name="help3">标签</string>
     <string name="help3text">选择类别</string>
     <string name="help4">翻译</string>
-    <string name="help4text">点击译文即可听到翻译</string>
+    <string name="help4text">点击图片或译文即可听到翻译</string>
     <string name="help5">原文</string>
-    <string name="help5text">点击图片或原文即可听到原文</string>
+    <string name="help5text">点击原文即可听到原文</string>
     <string name="help6">字母和数字</string>
     <string name="help6text">点击字母可用所学语言朗读。点击数字用母语朗读，长按则用所学语言朗读</string>
     <string name="help7">互联网</string>
@@ -1108,6 +1108,9 @@
     <string name="tts_not_supported">此设备的文字转语音不支持该语言。</string>
     <string name="button_back">返回</string>
     <string name="ad_privacy_settings">广告隐私设置</string>
+    <string name="intro_skip">跳过</string>
+    <string name="intro_next">下一步</string>
+    <string name="intro_done">完成</string>
     <string name="shareVia">分享方式</string>
     <string name="button_help">帮助</string>
     <string name="privacy_policy">隐私政策</string>

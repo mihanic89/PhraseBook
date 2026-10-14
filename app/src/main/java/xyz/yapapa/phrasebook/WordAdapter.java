@@ -26,6 +26,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 /**
  * Карточки с картинкой: верхняя подпись на родном языке, нижняя на изучаемом.
+ * Картинка и нижняя подпись озвучиваются на изучаемом языке, верхняя — на родном.
  */
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
@@ -136,7 +137,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
                 .transition(withCrossFade(700))
                 .into(holder.imageView);
 
-        holder.imageView.setOnClickListener(v -> tts.speakDefault(original));
+        holder.imageView.setOnClickListener(v -> tts.speakTranslate(translation));
         holder.textDefault.setOnClickListener(v -> tts.speakDefault(original));
         holder.textTranslate.setOnClickListener(v -> tts.speakTranslate(translation));
     }

@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -55,13 +58,18 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // светлый фон: тёмные значки в строке состояния и навигации
+        EdgeToEdge.enable(this,
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
         super.onCreate(savedInstanceState);
 
         setupAdsDebug();
         setContentView(R.layout.activity_start);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.start_root), (v, insets) -> {
-            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
             v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
             return insets;
         });
@@ -70,6 +78,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         setupLanguageSpinner();
 
         adView = findViewById(R.id.adView);
+        if (!BuildConfig.ADS_ENABLED) AdConsent.collapse(adView);
         adPrivacyLink = findViewById(R.id.textViewAdPrivacy);
         adPrivacyLink.setOnClickListener(v -> AdConsent.showPrivacyOptions(this, this::onConsentGathered));
 
@@ -129,7 +138,7 @@ public class StartActivity extends AppCompatActivity implements AdapterView.OnIt
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
         GlideApp.with(this)
-                .load(R.mipmap.background)
+                .load(R.drawable.background)
                 .priority(Priority.LOW)
                 .override(width / 2, height / 2)
                 .fitCenter()

@@ -11,9 +11,9 @@
     <string name="help3">Guias</string>
     <string name="help3text">Selecione a categoria</string>
     <string name="help4">Tradução</string>
-    <string name="help4text">Toque no texto traduzido para ouvir a tradução</string>
+    <string name="help4text">Toque na imagem ou no texto traduzido para ouvir a tradução</string>
     <string name="help5">Original</string>
-    <string name="help5text">Toque na imagem ou no texto original para ouvir o original</string>
+    <string name="help5text">Toque no texto original para ouvir o original</string>
     <string name="help6">Letras e números</string>
     <string name="help6text">Toque em uma letra para ouvi-la no idioma que você está aprendendo. Toque em um número para ouvi-lo no seu idioma ou mantenha-o pressionado para ouvi-lo no idioma que você está aprendendo</string>
     <string name="help7">Internet</string>
@@ -1109,6 +1109,9 @@
     <string name="tts_not_supported">A síntese de voz deste dispositivo não suporta este idioma.</string>
     <string name="button_back">Voltar</string>
     <string name="ad_privacy_settings">Configurações de privacidade de anúncios</string>
+    <string name="intro_skip">Pular</string>
+    <string name="intro_next">Próximo</string>
+    <string name="intro_done">Concluir</string>
     <string name="shareVia">Compartilhar via</string>
     <string name="button_help">Ajuda</string>
     <string name="privacy_policy">Política de privacidade</string>

@@ -3,14 +3,21 @@ package xyz.yapapa.phrasebook;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -40,8 +47,13 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // строка состояния над зелёной панелью вкладок — светлые значки; навигация над светлым фоном
+        EdgeToEdge.enable(this,
+                SystemBarStyle.dark(Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
+        applyWindowInsets();
 
         prefs = getSharedPreferences("language", Context.MODE_PRIVATE);
         String languageTranslate = prefs.getString("languageTranslate", "en");
@@ -57,6 +69,7 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         ttsTranslation = new TtsSpeaker(this, languageTranslate, this::onTtsUnavailable);
 
         adView = findViewById(R.id.adView2);
+        if (!BuildConfig.ADS_ENABLED) AdConsent.collapse(adView);
         // согласие собирается на стартовом экране; без него реклама не запрашивается
         if (AdConsent.canRequestAds(this)) {
             AdConsent.startMobileAds(this);
@@ -64,11 +77,34 @@ public class TabbedActivity extends AppCompatActivity implements TTSListener {
         }
     }
 
+    /**
+     * Фон до краёв экрана; панель вкладок уходит под строку состояния, карточки и баннер
+     * заканчиваются над панелью навигации.
+     */
+    private void applyWindowInsets() {
+        View appBar = findViewById(R.id.appbar);
+        View pager = findViewById(R.id.container);
+        View banner = findViewById(R.id.adView2);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_content), (v, insets) -> {
+            Insets bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+            appBar.setPadding(bars.left, bars.top, bars.right, 0);
+            ViewGroup.MarginLayoutParams pagerParams = (ViewGroup.MarginLayoutParams) pager.getLayoutParams();
+            pagerParams.leftMargin = bars.left;
+            pagerParams.rightMargin = bars.right;
+            pager.setLayoutParams(pagerParams);
+            ViewGroup.MarginLayoutParams bannerParams = (ViewGroup.MarginLayoutParams) banner.getLayoutParams();
+            bannerParams.bottomMargin = bars.bottom;
+            banner.setLayoutParams(bannerParams);
+            return WindowInsetsCompat.CONSUMED;
+        });
+    }
+
     private void loadBackground() {
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
         GlideApp.with(this)
-                .load(R.mipmap.background)
+                .load(R.drawable.background)
                 .priority(Priority.LOW)
                 .override(width / 3, height / 3)
                 .fitCenter()

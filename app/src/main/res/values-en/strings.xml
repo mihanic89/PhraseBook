@@ -15,9 +15,9 @@
     <string name="help3">Tabs</string>
     <string name="help3text">Select category</string>
     <string name="help4">Translation</string>
-    <string name="help4text">Tap the translated text to hear the translation</string>
+    <string name="help4text">Tap the picture or the translated text to hear the translation</string>
     <string name="help5">Original</string>
-    <string name="help5text">Tap the picture or the original text to hear the original</string>
+    <string name="help5text">Tap the original text to hear the original</string>
     <string name="help6">Letters and numbers</string>
     <string name="help6text">Tap a letter to hear it in the language you are learning. Tap a number to hear it in your language, or press and hold to hear it in the language you are learning</string>
     <string name="help7">Internet</string>
@@ -1114,6 +1114,9 @@
     <string name="tts_not_supported">Text-to-speech on this device does not support this language.</string>
     <string name="button_back">Back</string>
     <string name="ad_privacy_settings">Ad privacy settings</string>
+    <string name="intro_skip">Skip</string>
+    <string name="intro_next">Next</string>
+    <string name="intro_done">Done</string>
     <string name="shareVia">Share via</string>
     <string name="button_help">Help</string>
     <string name="privacy_policy">Privacy Policy</string>

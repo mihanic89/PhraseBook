@@ -13,9 +13,9 @@
     <string name="help3">Onglets</string>
     <string name="help3text">Sélectionnez une catégorie</string>
     <string name="help4">Traduction</string>
-    <string name="help4text">Touchez le texte traduit pour entendre la traduction</string>
+    <string name="help4text">Touchez l\'image ou le texte traduit pour entendre la traduction</string>
     <string name="help5">Original</string>
-    <string name="help5text">Touchez l\'image ou le texte original pour entendre l\'original</string>
+    <string name="help5text">Touchez le texte original pour entendre l\'original</string>
     <string name="help6">Lettres et chiffres</string>
     <string name="help6text">Touchez une lettre pour l\'entendre dans la langue que vous apprenez. Touchez un nombre pour l\'entendre dans votre langue, ou maintenez-le appuyé pour l\'entendre dans la langue que vous apprenez</string>
     <string name="help7">Internet</string>
@@ -1111,6 +1111,9 @@
     <string name="tts_not_supported">La synthèse vocale de cet appareil ne prend pas en charge cette langue.</string>
     <string name="button_back">Retour</string>
     <string name="ad_privacy_settings">Paramètres de confidentialité des annonces</string>
+    <string name="intro_skip">Passer</string>
+    <string name="intro_next">Suivant</string>
+    <string name="intro_done">Terminé</string>
     <string name="shareVia">Partager via</string>
     <string name="button_help">Aide</string>
     <string name="privacy_policy">Politique de confidentialité</string>

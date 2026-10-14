@@ -56,7 +56,7 @@ public class FlagAdapter extends RecyclerView.Adapter<FlagAdapter.ViewHolder> {
         holder.flagView.setText(flag.getImage());
         holder.flagView.setContentDescription(original);
 
-        holder.flagView.setOnClickListener(v -> tts.speakDefault(original));
+        holder.flagView.setOnClickListener(v -> tts.speakTranslate(translation));
         holder.textDefault.setOnClickListener(v -> tts.speakDefault(original));
         holder.textTranslate.setOnClickListener(v -> tts.speakTranslate(translation));
     }

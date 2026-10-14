@@ -12,9 +12,9 @@
     <string name="help3" >Вкладки</string>
     <string name="help3text" >Выберите категорию</string>
     <string name="help4" >Перевод</string>
-    <string name="help4text" >При нажатии на переведённый текст вы услышите перевод</string>
+    <string name="help4text" >При нажатии на картинку или переведённый текст вы услышите перевод</string>
     <string name="help5" >Оригинал</string>
-    <string name="help5text" >При нажатии на картинку или оригинальный текст вы услышите оригинал</string>
+    <string name="help5text" >При нажатии на оригинальный текст вы услышите оригинал</string>
     <string name="help6" >Буквы и цифры</string>
     <string name="help6text" >Нажмите на букву, чтобы услышать её на изучаемом языке. Нажатие на число озвучит его на родном языке, долгое нажатие — на изучаемом</string>
     <string name="help7" >Интернет</string>
@@ -1113,6 +1113,9 @@
     <string name="tts_not_supported">Синтез речи на этом устройстве не поддерживает этот язык.</string>
     <string name="button_back">Назад</string>
     <string name="ad_privacy_settings">Настройки конфиденциальности рекламы</string>
+    <string name="intro_skip">Пропустить</string>
+    <string name="intro_next">Далее</string>
+    <string name="intro_done">Готово</string>
     <string name="shareVia">Поделиться через</string>
     <string name="button_help">Справка</string>
     <string name="privacy_policy">Политика конфиденциальности</string>

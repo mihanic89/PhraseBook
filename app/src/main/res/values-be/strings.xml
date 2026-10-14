@@ -11,9 +11,9 @@
     <string name="help3">Ўкладкі</string>
     <string name="help3text">Выберыце катэгорыю</string>
     <string name="help4">Пераклад</string>
-    <string name="help4text">Націсніце на перакладзены тэкст, каб пачуць пераклад</string>
+    <string name="help4text">Націсніце на малюнак або перакладзены тэкст, каб пачуць пераклад</string>
     <string name="help5">Арыгінал</string>
-    <string name="help5text">Націсніце на малюнак або зыходны тэкст, каб пачуць арыгінал</string>
+    <string name="help5text">Націсніце на зыходны тэкст, каб пачуць арыгінал</string>
     <string name="help6">Літары і лічбы</string>
     <string name="help6text">Націсніце на літару, каб пачуць яе на мове, якую вывучаеце. Націск на лік агучыць яго на роднай мове, доўгі націск — на мове, якую вывучаеце</string>
     <string name="help7">Інтэрнэт</string>
@@ -1109,6 +1109,9 @@
     <string name="tts_not_supported">Сінтэз маўлення на гэтай прыладзе не падтрымлівае гэту мову.</string>
     <string name="button_back">Назад</string>
     <string name="ad_privacy_settings">Налады канфідэнцыяльнасці рэкламы</string>
+    <string name="intro_skip">Прапусціць</string>
+    <string name="intro_next">Далей</string>
+    <string name="intro_done">Гатова</string>
     <string name="shareVia">Падзяліцца праз</string>
     <string name="button_help">Даведка</string>
     <string name="privacy_policy">Палітыка канфідэнцыяльнасці</string>

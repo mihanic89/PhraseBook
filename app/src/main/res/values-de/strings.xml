@@ -13,9 +13,9 @@
     <string name="help3">Registerkarten</string>
     <string name="help3text">Wählen Sie die Kategorie</string>
     <string name="help4">Übersetzung</string>
-    <string name="help4text">Tippen Sie auf den übersetzten Text, um die Übersetzung zu hören</string>
+    <string name="help4text">Tippen Sie auf das Bild oder den übersetzten Text, um die Übersetzung zu hören</string>
     <string name="help5">Original</string>
-    <string name="help5text">Tippen Sie auf das Bild oder den Originaltext, um das Original zu hören</string>
+    <string name="help5text">Tippen Sie auf den Originaltext, um das Original zu hören</string>
     <string name="help6">Buchstaben und Zahlen</string>
     <string name="help6text">Tippen Sie auf einen Buchstaben, um ihn in der Sprache zu hören, die Sie lernen. Tippen Sie auf eine Zahl, um sie in Ihrer Sprache zu hören, oder halten Sie sie gedrückt, um sie in der Lernsprache zu hören</string>
     <string name="help7">Internet</string>
@@ -1110,6 +1110,9 @@
     <string name="tts_not_supported">Die Sprachausgabe dieses Geräts unterstützt diese Sprache nicht.</string>
     <string name="button_back">Zurück</string>
     <string name="ad_privacy_settings">Datenschutzeinstellungen für Werbung</string>
+    <string name="intro_skip">Überspringen</string>
+    <string name="intro_next">Weiter</string>
+    <string name="intro_done">Fertig</string>
     <string name="shareVia">Teilen über</string>
     <string name="button_help">Hilfe</string>
     <string name="privacy_policy">Datenschutzerklärung</string>

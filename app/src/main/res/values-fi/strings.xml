@@ -11,9 +11,9 @@
     <string name="help3">Välilehdet</string>
     <string name="help3text">Valitse luokka</string>
     <string name="help4">Käännös</string>
-    <string name="help4text">Napauta käännettyä tekstiä kuullaksesi käännöksen</string>
+    <string name="help4text">Napauta kuvaa tai käännettyä tekstiä kuullaksesi käännöksen</string>
     <string name="help5">Alkuperäinen</string>
-    <string name="help5text">Napauta kuvaa tai alkuperäistä tekstiä kuullaksesi alkuperäisen</string>
+    <string name="help5text">Napauta alkuperäistä tekstiä kuullaksesi alkuperäisen</string>
     <string name="help6">Kirjaimet ja numerot</string>
     <string name="help6text">Napauta kirjainta kuullaksesi sen opiskeltavalla kielellä. Napauta numeroa kuullaksesi sen omalla kielelläsi tai pidä sitä painettuna kuullaksesi sen opiskeltavalla kielellä</string>
     <string name="help7">Internet</string>
@@ -1110,6 +1110,9 @@
     <string name="tts_not_supported">Tämän laitteen puhesynteesi ei tue tätä kieltä.</string>
     <string name="button_back">Takaisin</string>
     <string name="ad_privacy_settings">Mainosten tietosuoja-asetukset</string>
+    <string name="intro_skip">Ohita</string>
+    <string name="intro_next">Seuraava</string>
+    <string name="intro_done">Valmis</string>
     <string name="shareVia">Jaa sovelluksella</string>
     <string name="button_help">Ohje</string>
     <string name="privacy_policy">Tietosuojakäytäntö</string>

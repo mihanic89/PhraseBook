@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Справка: зелёный фон до краёв экрана, содержимое с отступами системных панелей (IntroActivity). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/intro_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/introPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <Button
+            android:id="@+id/introSkip"
+            style="@style/IntroButton"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/intro_skip" />
+
+        <LinearLayout
+            android:id="@+id/introDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:importantForAccessibility="no"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/introNext"
+            style="@style/IntroButton"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/intro_next" />
+    </RelativeLayout>
+</LinearLayout>

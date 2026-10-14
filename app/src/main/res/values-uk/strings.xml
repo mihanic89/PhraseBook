@@ -11,9 +11,9 @@
     <string name="help3">Вкладки</string>
     <string name="help3text">Виберіть категорію</string>
     <string name="help4">Переклад</string>
-    <string name="help4text">Натисніть на перекладений текст, щоб почути переклад</string>
+    <string name="help4text">Натисніть на картинку або перекладений текст, щоб почути переклад</string>
     <string name="help5">Оригінал</string>
-    <string name="help5text">Натисніть на картинку або вихідний текст, щоб почути оригінал</string>
+    <string name="help5text">Натисніть на вихідний текст, щоб почути оригінал</string>
     <string name="help6">Літери та цифри</string>
     <string name="help6text">Натисніть на літеру, щоб почути її мовою, яку ви вивчаєте. Натискання на число озвучить його рідною мовою, довге натискання — мовою, яку ви вивчаєте</string>
     <string name="help7">Інтернет</string>
@@ -1109,6 +1109,9 @@
     <string name="tts_not_supported">Синтез мовлення на цьому пристрої не підтримує цю мову.</string>
     <string name="button_back">Назад</string>
     <string name="ad_privacy_settings">Налаштування конфіденційності реклами</string>
+    <string name="intro_skip">Пропустити</string>
+    <string name="intro_next">Далі</string>
+    <string name="intro_done">Готово</string>
     <string name="shareVia">Поділитися через</string>
     <string name="button_help">Довідка</string>
     <string name="privacy_policy">Політика конфіденційності</string>

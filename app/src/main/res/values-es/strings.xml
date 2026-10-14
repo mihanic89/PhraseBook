@@ -13,9 +13,9 @@
     <string name="help3">Pestañas</string>
     <string name="help3text">Seleccione la categoría</string>
     <string name="help4">Traducción</string>
-    <string name="help4text">Toque el texto traducido para escuchar la traducción</string>
+    <string name="help4text">Toque la imagen o el texto traducido para escuchar la traducción</string>
     <string name="help5">Original</string>
-    <string name="help5text">Toque la imagen o el texto original para escuchar el original</string>
+    <string name="help5text">Toque el texto original para escuchar el original</string>
     <string name="help6">Letras y números</string>
     <string name="help6text">Toque una letra para escucharla en el idioma que aprende. Toque un número para escucharlo en su idioma o manténgalo pulsado para escucharlo en el idioma que aprende</string>
     <string name="help7">Internet</string>
@@ -1119,6 +1119,9 @@
     <string name="tts_not_supported">La síntesis de voz de este dispositivo no admite este idioma.</string>
     <string name="button_back">Atrás</string>
     <string name="ad_privacy_settings">Configuración de privacidad de anuncios</string>
+    <string name="intro_skip">Omitir</string>
+    <string name="intro_next">Siguiente</string>
+    <string name="intro_done">Listo</string>
     <string name="shareVia">Compartir con</string>
     <string name="button_help">Ayuda</string>
     <string name="privacy_policy">Política de privacidad</string>

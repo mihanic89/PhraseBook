@@ -57,7 +57,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
         holder.imageColor.setImageResource(color.getColor());
         holder.imageColor.setContentDescription(original);
 
-        holder.imageColor.setOnClickListener(v -> tts.speakDefault(original));
+        holder.imageColor.setOnClickListener(v -> tts.speakTranslate(translation));
         holder.textDefault.setOnClickListener(v -> tts.speakDefault(original));
         holder.textTranslate.setOnClickListener(v -> tts.speakTranslate(translation));
     }

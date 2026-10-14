@@ -2,6 +2,7 @@ package xyz.yapapa.phrasebook;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.View;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.ump.ConsentDebugSettings;
@@ -75,6 +76,16 @@ final class AdConsent {
     /** Повторно показывает форму, чтобы пользователь мог изменить решение. */
     static void showPrivacyOptions(Activity activity, Listener listener) {
         UserMessagingPlatform.showPrivacyOptionsForm(activity, formError -> listener.onConsentGathered());
+    }
+
+    /**
+     * Убирает место под баннер, когда реклама выключена. Не GONE: в разметке стартового
+     * экрана к баннеру привязаны другие элементы, а у пустого AdView высота рекламного места.
+     */
+    static void collapse(View adView) {
+        adView.setVisibility(View.INVISIBLE);
+        adView.getLayoutParams().height = 0;
+        adView.requestLayout();
     }
 
     /** Инициализирует Mobile Ads один раз за процесс; вызывать только при {@link #canRequestAds}. */
